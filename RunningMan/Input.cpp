@@ -13,8 +13,8 @@ Input::~Input()
 
 
 void Input::clearKeyArrays() {
-	this->_pressedKeys.clear();
-	this->_releasedKeys.clear();
+	_pressedKeys.clear();
+	_releasedKeys.clear();
 }
 
 void Input::processEvents()
@@ -27,7 +27,7 @@ void Input::processEvents()
 		{
 		case SDL_KEYDOWN:
 			std::cout << "KEYDOWN\n";
-			this->_pressedKeys[event.key.keysym.scancode] = true;
+			_pressedKeys[event.key.keysym.scancode] = true;
 			break;
 		case SDL_MOUSEBUTTONDOWN:
 			std::cout << "MOUSEDOWN\n";
@@ -43,7 +43,7 @@ void Input::processEvents()
 
 bool Input::wasKeyPressed(SDL_Scancode key)
 {
-	return this->_pressedKeys[key];
+	return _pressedKeys[key];
 }
 
 bool Input::wasKeyReleased(SDL_Scancode key)

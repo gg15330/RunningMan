@@ -11,13 +11,10 @@ Sprite::Sprite(globals::Character character, char* filePath, int sourceX, int so
 	_filePath(filePath),
 	_frame(0)
 {
-	std::cout << "PLAYER: " << character << "\n";
-	std::cout << "FILEPATH: " << filePath << "\n";
-
-	this->_sourceRect.x = sourceX;
-	this->_sourceRect.y = sourceY;
-	this->_sourceRect.w = width;
-	this->_sourceRect.h = height;
+	_sourceRect.x = sourceX;
+	_sourceRect.y = sourceY;
+	_sourceRect.w = width;
+	_sourceRect.h = height;
 }
 
 
@@ -31,17 +28,17 @@ void Sprite::update()
 
 SDL_Rect* Sprite::getSourceRect()
 {
-	return &this->_sourceRect;
+	return &_sourceRect;
 }
 
 SDL_Texture * Sprite::getSpriteSheet()
 {
-	return this->_spriteSheet;
+	return _spriteSheet;
 }
 
 int Sprite::getFrame()
 {
-	return this->_frame;
+	return _frame;
 }
 
 globals::Character Sprite::getCharacter()
@@ -51,5 +48,5 @@ globals::Character Sprite::getCharacter()
 
 char * Sprite::getFilePath()
 {
-	return this->_filePath;
+	return _filePath;
 }
