@@ -1,3 +1,4 @@
+#include "Globals.h"
 #include "Sprite.h"
 
 #include <iostream>
@@ -9,7 +10,7 @@ Sprite::Sprite()
 Sprite::Sprite(globals::Character character, char* filePath, int sourceX, int sourceY, int width, int height, int posX, int posY) :
 	_character(character),
 	_filePath(filePath),
-	_frame(0)
+	_frameIndex(0)
 {
 	_sourceRect.x = sourceX;
 	_sourceRect.y = sourceY;
@@ -31,14 +32,9 @@ SDL_Rect* Sprite::getSourceRect()
 	return &_sourceRect;
 }
 
-SDL_Texture * Sprite::getSpriteSheet()
+int Sprite::getFrameIndex()
 {
-	return _spriteSheet;
-}
-
-int Sprite::getFrame()
-{
-	return _frame;
+	return _frameIndex;
 }
 
 globals::Character Sprite::getCharacter()

@@ -1,9 +1,7 @@
 #pragma once
 
-#include "Globals.h"
-#include "Graphics.h"
-#include "Input.h"
-#include "Sprite.h"
+class Graphics;
+class Input;
 
 class Game
 {
@@ -21,7 +19,7 @@ public:
 	/// </summary>
 	void gameLoop();
 private:
-	Graphics _graphics;
-	Input _input;
+	Graphics* _graphics;
+	Input* _input;
 };
 

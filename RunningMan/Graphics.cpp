@@ -1,3 +1,5 @@
+#include "Globals.h"
+#include "Sprite.h"
 #include "Graphics.h"
 
 #include <iostream>
@@ -35,8 +37,7 @@ void Graphics::draw()
 
 void Graphics::blitSurface(SDL_Texture* texture, SDL_Rect* sourceRectangle, SDL_Rect* destinationRectangle) 
 {
-	int success = SDL_RenderCopy(_renderer, texture, sourceRectangle, destinationRectangle);
-	std::cout << success << "\n";
+	SDL_RenderCopy(_renderer, texture, sourceRectangle, destinationRectangle);
 }
 
 void Graphics::flip()

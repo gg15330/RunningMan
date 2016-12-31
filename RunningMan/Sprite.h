@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Globals.h"
-
 #include <SDL.h>
 #include <SDL_image.h>
 #include <string>
@@ -32,28 +30,26 @@ public:
 	SDL_Rect* getSourceRect();
 
 	/// <summary>
-	/// Get the sprite's current SDL_Texture
+	/// Returns the Sprite's frame index
 	/// </summary>
-	/// <returns>A pointer to the sprite's current SDL_Texture</returns>
-	SDL_Texture* getSpriteSheet();
+	/// <returns>The frame index of the sprite</returns>
+	int getFrameIndex();
 
 	/// <summary>
-	/// 
+	/// Returns the sprite's character
 	/// </summary>
-	/// <returns></returns>
-	int getFrame();
-
-	/// <summary>
-	/// 
-	/// </summary>
+	/// <returns>The character enum for this sprite</returns>
 	globals::Character getCharacter();
 
+	/// <summary>
+	/// Returns the file path for this sprite's image file
+	/// </summary>
+	/// <returns>The file path of the sprite image</returns>
 	char* getFilePath();
 private:
-	globals::Character _character;
-	SDL_Texture* _spriteSheet;
 	SDL_Rect _sourceRect;
+	globals::Character _character;
 	char* _filePath;
-	int _x, _y, _frame;
+	int _x, _y, _frameIndex;
 };
 

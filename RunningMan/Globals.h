@@ -12,10 +12,10 @@ namespace globals
 	const int PIXEL_SCALE = 2;
 	char* const PLAYER_SPRITE_FILEPATH = "resources/MyChar.png";
 
-	enum Character
+	typedef enum Character
 	{
 		PLAYER, NONE
-	};
+	} Character;
 }
 
 #endif // !GLOBALS_H
