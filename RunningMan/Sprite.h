@@ -12,7 +12,6 @@ class Sprite
 {
 public:
 	Sprite(globals::Character character,
-		char* filePath,
 		int sourceX, 
 		int sourceY, 
 		int width, 
@@ -41,18 +40,11 @@ public:
 	/// <summary>
 	/// Returns the sprite's character
 	/// </summary>
-	/// <returns>The character enum for this sprite</returns>
+	/// <returns>The Character enum for this sprite</returns>
 	globals::Character getCharacter();
-
-	/// <summary>
-	/// Returns the file path for this sprite's image file
-	/// </summary>
-	/// <returns>The file path of the sprite image</returns>
-	char* getFilePath();
 private:
 	SDL_Rect _sourceRect;
 	globals::Character _character;
-	char* _filePath;
 	int _x, _y, _frameIndex;
 };
 

@@ -1,4 +1,3 @@
-#include "Globals.h"
 #include "Graphics.h"
 
 #include <iostream>
@@ -50,17 +49,29 @@ void Graphics::clear()
 	SDL_RenderClear(_renderer);
 }
 
-void Graphics::addSpriteSheet(Sprite &sprite)
+void Graphics::addSpriteSheet(globals::Character character, SDL_Texture* spriteSheet)
 {
-	if (_spriteSheets.count(sprite.getCharacter()) == 0)
+	if (_spriteSheets.count(character) == 0)
 	{
-		_spriteSheets[sprite.getCharacter()] = IMG_LoadTexture(_renderer, sprite.getFilePath());
+		_spriteSheets[character] = spriteSheet;
 
-		if (_spriteSheets[sprite.getCharacter()] == NULL)
+		if (_spriteSheets[character] == NULL)
 		{
-			fprintf(stderr, "Could not load texture: %s\n", sprite.getFilePath());
+			fprintf(stderr, "ERROR: Could not load texture\n");
 		}
 	}
+}
+
+SDL_Texture * Graphics::loadTexture(char * filePath)
+{
+	SDL_Texture* texture = IMG_LoadTexture(_renderer, filePath);
+
+	if (texture == NULL)
+	{
+		fprintf(stderr, "Could not load texture: %s\n", filePath);
+	}
+
+	return texture;
 }
 
 SDL_Renderer * Graphics::getRenderer()

@@ -1,9 +1,8 @@
 #include "Sprite.h"
 
 
-Sprite::Sprite(globals::Character character, char* filePath, int sourceX, int sourceY, int width, int height, int posX, int posY) :
+Sprite::Sprite(globals::Character character, int sourceX, int sourceY, int width, int height, int posX, int posY) :
 	_character(character),
-	_filePath(filePath),
 	_frameIndex(0)
 {
 	_sourceRect.x = sourceX;
@@ -34,9 +33,4 @@ int Sprite::getFrameIndex()
 globals::Character Sprite::getCharacter()
 {
 	return _character;
-}
-
-char * Sprite::getFilePath()
-{
-	return _filePath;
 }

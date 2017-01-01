@@ -19,8 +19,9 @@ void Game::init()
 
 void Game::gameLoop()
 {
-	Sprite sprite = Sprite(globals::PLAYER, globals::PLAYER_SPRITE_FILEPATH, 0, 0, 16, 16, 0, 0);
-	_graphics.addSpriteSheet(sprite);
+	Sprite sprite = Sprite(globals::PLAYER, 0, 0, 16, 16, 0, 0);
+	SDL_Texture* playerSpriteSheet = _graphics.loadTexture(globals::PLAYER_SPRITE_FILEPATH);
+	_graphics.addSpriteSheet(sprite.getCharacter(), playerSpriteSheet);
 
 	while (true)
 	{

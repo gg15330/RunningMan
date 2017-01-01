@@ -3,6 +3,7 @@
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
 
+#include "Globals.h"
 #include "Sprite.h"
 
 #include <SDL.h>
@@ -35,8 +36,16 @@ public:
 	/// <summary>
 	/// Adds a spritesheet to the spritesheet map
 	/// </summary>
-	/// <param name="sprite">The spritesheet to add</param>
-	void addSpriteSheet(Sprite &sprite);
+	/// <param name="character">The Character enum which corresponds to the spritesheet being added</param>
+	/// <param name="spriteSheet">The spritesheet to add</param>
+	void addSpriteSheet(globals::Character character, SDL_Texture* spriteSheet);
+
+	/// <summary>
+	/// Loads a texture into the renderer
+	/// </summary>
+	/// <param name="filePath">the file path of the image to create a texture from</param>
+	/// <returns>A pointer to the new texture</returns>
+	SDL_Texture* loadTexture(char* filePath);
 
 	/// <summary>
 	/// Returns the renderer

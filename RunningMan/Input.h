@@ -22,11 +22,27 @@ public:
 	/// <summary>
 	/// Process all pending SDL Events
 	/// </summary>
-	/// <param name="event">The SDL Event to be processed</param>
 	void processEvents();
 
+	/// <summary>
+	/// Checks if a particular key was pressed
+	/// </summary>
+	/// <param name="key">The SDL_Scancode of the key to check</param>
+	/// <returns>True if pressed, False if not</returns>
 	bool wasKeyPressed(SDL_Scancode key);
+	
+	/// <summary>
+	/// Checks if a particular key was released
+	/// </summary>
+	/// <param name="key">The SDL_Scancode of the key to check</param>
+	/// <returns>True if released, False if not</returns>
 	bool wasKeyReleased(SDL_Scancode key);
+
+	/// <summary>
+	/// Checks if a particular key is currently being held
+	/// </summary>
+	/// <param name="key">The SDL_Scancode of the key to check</param>
+	/// <returns>True if held, False if not</returns>
 	bool isKeyHeld(SDL_Scancode key);
 private:
 	std::map<SDL_Scancode, bool> _heldKeys;
