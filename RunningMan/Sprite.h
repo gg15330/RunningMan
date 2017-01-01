@@ -11,7 +11,7 @@
 class Sprite
 {
 public:
-	Sprite(globals::Character character,
+	Sprite(Character character,
 		int sourceX, 
 		int sourceY, 
 		int width, 
@@ -23,7 +23,7 @@ public:
 	/// <summary>
 	/// Updates the spritesheet
 	/// </summary>
-	virtual void update();
+	virtual void update(SDL_Rect rect);
 
 	/// <summary>
 	/// Get the sprite's current SDL_Rect
@@ -41,10 +41,13 @@ public:
 	/// Returns the sprite's character
 	/// </summary>
 	/// <returns>The Character enum for this sprite</returns>
-	globals::Character getCharacter();
+	Character getCharacter();
+
+	int getX();
+	int getY();
 private:
 	SDL_Rect _sourceRect;
-	globals::Character _character;
+	Character _character;
 	int _x, _y, _frameIndex;
 };
 

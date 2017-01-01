@@ -31,14 +31,14 @@ public:
 	/// <summary>
 	/// Draws everything to the screen
 	/// </summary>
-	void draw();
+	void draw(int x, int y);
 
 	/// <summary>
 	/// Adds a spritesheet to the spritesheet map
 	/// </summary>
 	/// <param name="character">The Character enum which corresponds to the spritesheet being added</param>
 	/// <param name="spriteSheet">The spritesheet to add</param>
-	void addSpriteSheet(globals::Character character, SDL_Texture* spriteSheet);
+	void addSpriteSheet(Character character, SDL_Texture* spriteSheet);
 
 	/// <summary>
 	/// Loads a texture into the renderer
@@ -55,7 +55,7 @@ public:
 private:
 	SDL_Window* _window;
 	SDL_Renderer* _renderer;
-	std::map<globals::Character, SDL_Texture*> _spriteSheets;
+	std::map<Character, SDL_Texture*> _spriteSheets;
 
 	/// <summary>
 	/// Draws a texture to a certain part of the screen

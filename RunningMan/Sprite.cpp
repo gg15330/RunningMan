@@ -1,9 +1,11 @@
 #include "Sprite.h"
 
 
-Sprite::Sprite(globals::Character character, int sourceX, int sourceY, int width, int height, int posX, int posY) :
+Sprite::Sprite(Character character, int sourceX, int sourceY, int width, int height, int posX, int posY) :
 	_character(character),
-	_frameIndex(0)
+	_frameIndex(0),
+	_x(posX),
+	_y(posY)
 {
 	_sourceRect.x = sourceX;
 	_sourceRect.y = sourceY;
@@ -16,8 +18,10 @@ Sprite::~Sprite()
 {
 }
 
-void Sprite::update()
+void Sprite::update(SDL_Rect rect)
 {
+	_x = rect.x;
+	_y = rect.y;
 }
 
 SDL_Rect* Sprite::getSourceRect()
@@ -30,7 +34,17 @@ int Sprite::getFrameIndex()
 	return _frameIndex;
 }
 
-globals::Character Sprite::getCharacter()
+Character Sprite::getCharacter()
 {
 	return _character;
+}
+
+int Sprite::getX()
+{
+	return _x;
+}
+
+int Sprite::getY()
+{
+	return _y;
 }

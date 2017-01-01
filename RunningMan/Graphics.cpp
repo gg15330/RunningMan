@@ -27,10 +27,16 @@ void Graphics::quit()
 	SDL_Quit();
 }
 
-void Graphics::draw()
+void Graphics::draw(int x, int y)
 {
+	SDL_Rect destRect;
+	destRect.h = 16;
+	destRect.w = 16;
+	destRect.x = x;
+	destRect.y = y;
+
 	clear();
-	blitSurface(_spriteSheets[globals::PLAYER], NULL, NULL);
+	blitSurface(_spriteSheets[Character::PLAYER], NULL, &destRect);
 	flip();
 }
 
@@ -49,7 +55,7 @@ void Graphics::clear()
 	SDL_RenderClear(_renderer);
 }
 
-void Graphics::addSpriteSheet(globals::Character character, SDL_Texture* spriteSheet)
+void Graphics::addSpriteSheet(Character character, SDL_Texture* spriteSheet)
 {
 	if (_spriteSheets.count(character) == 0)
 	{
