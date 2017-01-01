@@ -3,16 +3,13 @@
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
 
+#include "Sprite.h"
+
 #include <SDL.h>
 #include <SDL_image.h>
+
 #include <map>
 
-class Sprite;
-
-namespace globals 
-{ 
-	enum Character; 
-};
 
 class Graphics
 {
@@ -34,7 +31,6 @@ public:
 	/// Draws everything to the screen
 	/// </summary>
 	void draw();
-
 
 	/// <summary>
 	/// Adds a spritesheet to the spritesheet map

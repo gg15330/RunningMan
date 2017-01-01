@@ -1,7 +1,12 @@
 #pragma once
 
+#ifndef INPUT_H
+#define INPUT_H
+
 #include <SDL.h>
+
 #include <map>
+
 
 class Input
 {
@@ -29,3 +34,4 @@ private:
 	std::map<SDL_Scancode, bool> _releasedKeys;
 };
 
+#endif // !INPUT_H

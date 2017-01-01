@@ -1,8 +1,8 @@
 #include "Globals.h"
-#include "Sprite.h"
 #include "Graphics.h"
 
 #include <iostream>
+
 
 Graphics::Graphics()
 {
@@ -55,6 +55,7 @@ void Graphics::addSpriteSheet(Sprite &sprite)
 	if (_spriteSheets.count(sprite.getCharacter()) == 0)
 	{
 		_spriteSheets[sprite.getCharacter()] = IMG_LoadTexture(_renderer, sprite.getFilePath());
+
 		if (_spriteSheets[sprite.getCharacter()] == NULL)
 		{
 			fprintf(stderr, "Could not load texture: %s\n", sprite.getFilePath());

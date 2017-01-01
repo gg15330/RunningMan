@@ -1,11 +1,5 @@
-#include "Globals.h"
 #include "Sprite.h"
 
-#include <iostream>
-
-Sprite::Sprite()
-{
-}
 
 Sprite::Sprite(globals::Character character, char* filePath, int sourceX, int sourceY, int width, int height, int posX, int posY) :
 	_character(character),

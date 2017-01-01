@@ -1,7 +1,10 @@
 #pragma once
 
-class Graphics;
-class Input;
+#ifndef GAME_H
+#define GAME_H
+
+#include "Graphics.h"
+#include "Input.h"
 
 class Game
 {
@@ -19,7 +22,8 @@ public:
 	/// </summary>
 	void gameLoop();
 private:
-	Graphics* _graphics;
-	Input* _input;
+	Graphics _graphics;
+	Input _input;
 };
 
+#endif // !GAME_H

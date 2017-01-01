@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+
 Input::Input()
 {
 }

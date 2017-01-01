@@ -1,13 +1,16 @@
 #pragma once
 
+#ifndef SPRITE_H
+#define SPRITE_H
+
+#include "Globals.h"
+
 #include <SDL.h>
-#include <SDL_image.h>
-#include <string>
+
 
 class Sprite
 {
 public:
-	Sprite();
 	Sprite(globals::Character character,
 		char* filePath,
 		int sourceX, 
@@ -53,3 +56,4 @@ private:
 	int _x, _y, _frameIndex;
 };
 
+#endif // !SPRITE_H
