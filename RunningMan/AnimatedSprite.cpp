@@ -5,9 +5,8 @@
 #include "sprite.h"
 
 
-AnimatedSprite::AnimatedSprite(Character character, int sourceX, int sourceY,
-	int width, int height, float posX, float posY, float timeToUpdate) :
-	Sprite(character, sourceX, sourceY, width, height, posX, posY),
+AnimatedSprite::AnimatedSprite(SDL_Renderer* renderer, const char* filePath, int sourceX, int sourceY, int width, int height, float posX, float posY, float timeToUpdate) :
+	Sprite(renderer, filePath, sourceX, sourceY, width, height, posX, posY),
 	_frameIndex(0),
 	_timeToUpdate(timeToUpdate),
 	_visible(true),
@@ -50,7 +49,7 @@ void AnimatedSprite::stopAnimation() {
 
 void AnimatedSprite::update(int elapsedTime) {
 	SDL_Rect rect = {0, 0, 0, 0};
-	Sprite::update(rect);
+	//Sprite::updatePos(rect);
 
 	this->_timeElapsed += elapsedTime;
 	if (this->_timeElapsed > this->_timeToUpdate) {

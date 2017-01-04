@@ -28,10 +28,12 @@ public:
 	/// </summary>
 	void quit();
 
+	void updateRect(int x, int y);
+
 	/// <summary>
 	/// Draws everything to the screen
 	/// </summary>
-	void draw(int x, int y);
+	void draw(Character character, SDL_Rect* sourceRect, SDL_Rect* destinationRect, int elapsedTime);
 
 	/// <summary>
 	/// Adds a spritesheet to the spritesheet map

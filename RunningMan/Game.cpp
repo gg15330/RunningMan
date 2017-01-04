@@ -3,12 +3,22 @@
 #include "Game.h"
 
 #include <iostream>
+#include <algorithm>
+
+#define NOMINMAX
 
 
-Game::Game()
-{
+namespace {
+	const int FPS = 50;
+	const int MAX_FRAME_TIME = 5 * 1000 / FPS;
 }
 
+
+
+Game::Game() :
+	_player(Sprite(_graphics.getRenderer(), globals::PLAYER_SPRITE_FILEPATH, 0, 0, globals::PLAYER_SPRITE_WIDTH, globals::PLAYER_SPRITE_HEIGHT, 0, 0))
+{
+}
 
 Game::~Game()
 {
@@ -21,32 +31,29 @@ void Game::init()
 
 void Game::gameLoop()
 {
-	Sprite sprite = Sprite(Character::PLAYER, 0, 0, 16, 16, 0, 0);
+	_sprites[Character::PLAYER] = &_player;
 	SDL_Texture* playerSpriteSheet = _graphics.loadTexture(globals::PLAYER_SPRITE_FILEPATH);
-	_graphics.addSpriteSheet(sprite.getCharacter(), playerSpriteSheet);
-
+	_graphics.addSpriteSheet(Character::PLAYER, playerSpriteSheet);
 	int x = 0;
-	SDL_Rect rect;
-	rect.h = 16;
-	rect.w = 16;
-	rect.x = x;
-	rect.y = 10;
-
+	int y = 0;
+	int lastUpdateTime = SDL_GetTicks();
 	while (true)
 	{
 		_input.clearKeyArrays();
 		_input.processEvents();
-
 		if (_input.wasKeyPressed(SDL_SCANCODE_ESCAPE)) 
 		{
 			_graphics.quit();
 			return;
 		}
-
-		rect.x++;
-		std::cout << rect.x << "\n";
-		sprite.update(rect);
-		_graphics.draw(sprite.getX(), sprite.getY());
+		_player.updatePos(x++, y++);
 		//_graphics.draw();
+		const int currentTimeMS = SDL_GetTicks();
+		int elapsedTime = currentTimeMS - lastUpdateTime;
+		_graphics.draw(Character::PLAYER, _player.getSourceRect(), _player.getDestinationRect(), std::min(elapsedTime, MAX_FRAME_TIME));
 	}
+}
+
+void Game::update(int elapsedTime)
+{
 }

@@ -27,16 +27,14 @@ void Graphics::quit()
 	SDL_Quit();
 }
 
-void Graphics::draw(int x, int y)
+void Graphics::updateRect(int x, int y)
 {
-	SDL_Rect destRect;
-	destRect.h = 16;
-	destRect.w = 16;
-	destRect.x = x;
-	destRect.y = y;
+}
 
+void Graphics::draw(Character character, SDL_Rect* sourceRect, SDL_Rect* destinationRect, int elapsedTime)
+{
 	clear();
-	blitSurface(_spriteSheets[Character::PLAYER], NULL, &destRect);
+	blitSurface(_spriteSheets[character], sourceRect, destinationRect);
 	flip();
 }
 
@@ -60,7 +58,6 @@ void Graphics::addSpriteSheet(Character character, SDL_Texture* spriteSheet)
 	if (_spriteSheets.count(character) == 0)
 	{
 		_spriteSheets[character] = spriteSheet;
-
 		if (_spriteSheets[character] == NULL)
 		{
 			fprintf(stderr, "ERROR: Could not load texture\n");

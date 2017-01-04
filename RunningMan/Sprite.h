@@ -6,12 +6,14 @@
 #include "Globals.h"
 
 #include <SDL.h>
+#include <SDL_image.h>
 
 
 class Sprite
 {
 public:
-	Sprite(Character character,
+	Sprite(SDL_Renderer* renderer,
+		const char* filePath,
 		int sourceX, 
 		int sourceY, 
 		int width, 
@@ -23,13 +25,19 @@ public:
 	/// <summary>
 	/// Updates the spritesheet
 	/// </summary>
-	virtual void update(SDL_Rect rect);
+	virtual void updatePos(int x, int y);
 
 	/// <summary>
-	/// Get the sprite's current SDL_Rect
+	/// Get the sprite's current source SDL_Rect
 	/// </summary>
-	/// <returns>A pointer to the sprite's current SDL_Rect</returns>
+	/// <returns>A pointer to the sprite's current source SDL_Rect</returns>
 	SDL_Rect* getSourceRect();
+
+	/// <summary>
+	/// Get the sprite's current destination SDL_Rect
+	/// </summary>
+	/// <returns>A pointer to the sprite's current destination SDL_Rect</returns>
+	SDL_Rect* getDestinationRect();
 
 	/// <summary>
 	/// Returns the Sprite's frame index
@@ -38,17 +46,15 @@ public:
 	int getFrameIndex();
 
 	/// <summary>
-	/// Returns the sprite's character
+	/// 
 	/// </summary>
-	/// <returns>The Character enum for this sprite</returns>
-	Character getCharacter();
-
-	int getX();
-	int getY();
+	/// <returns></returns>
+	SDL_Texture* getSpriteSheet();
 private:
+	SDL_Texture* _spriteSheet;
 	SDL_Rect _sourceRect;
-	Character _character;
-	int _x, _y, _frameIndex;
+	SDL_Rect _destinationRect;
+	int _frameIndex;
 };
 
 #endif // !SPRITE_H

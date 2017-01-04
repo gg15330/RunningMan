@@ -1,16 +1,18 @@
 #include "Sprite.h"
 
 
-Sprite::Sprite(Character character, int sourceX, int sourceY, int width, int height, int posX, int posY) :
-	_character(character),
-	_frameIndex(0),
-	_x(posX),
-	_y(posY)
+Sprite::Sprite(SDL_Renderer* renderer, const char* filePath, int sourceX, int sourceY, int width, int height, int posX, int posY) :
+	_frameIndex(0)
 {
+	_spriteSheet = IMG_LoadTexture(renderer, filePath);
 	_sourceRect.x = sourceX;
 	_sourceRect.y = sourceY;
 	_sourceRect.w = width;
 	_sourceRect.h = height;
+	_destinationRect.w = width; 
+	_destinationRect.h = height;
+	_destinationRect.x = posX;
+	_destinationRect.y = posY;
 }
 
 
@@ -18,10 +20,8 @@ Sprite::~Sprite()
 {
 }
 
-void Sprite::update(SDL_Rect rect)
+void Sprite::updatePos(int x, int y)
 {
-	_x = rect.x;
-	_y = rect.y;
 }
 
 SDL_Rect* Sprite::getSourceRect()
@@ -29,22 +29,17 @@ SDL_Rect* Sprite::getSourceRect()
 	return &_sourceRect;
 }
 
+SDL_Rect * Sprite::getDestinationRect()
+{
+	return &_destinationRect;
+}
+
 int Sprite::getFrameIndex()
 {
 	return _frameIndex;
 }
 
-Character Sprite::getCharacter()
+SDL_Texture * Sprite::getSpriteSheet()
 {
-	return _character;
-}
-
-int Sprite::getX()
-{
-	return _x;
-}
-
-int Sprite::getY()
-{
-	return _y;
+	return _spriteSheet;
 }

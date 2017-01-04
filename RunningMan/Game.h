@@ -5,6 +5,8 @@
 
 #include "Graphics.h"
 #include "Input.h"
+#include "Sprite.h"
+
 
 class Game
 {
@@ -24,6 +26,14 @@ public:
 private:
 	Graphics _graphics;
 	Input _input;
+	Sprite _player;
+	std::map<Character, Sprite*> _sprites;
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="elapsedTime"></param>
+	void update(int elapsedTime);
 };
 
 #endif // !GAME_H

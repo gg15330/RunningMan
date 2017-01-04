@@ -16,7 +16,7 @@ class Graphics;
 
 class AnimatedSprite : public Sprite {
 public:
-	AnimatedSprite(Character character, int sourceX, int sourceY, int width, int height,
+	AnimatedSprite(SDL_Renderer* renderer, const char* filePath, int sourceX, int sourceY, int width, int height,
 		float posX, float posY, float timeToUpdate);
 
 	/* void playAnimation
