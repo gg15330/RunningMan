@@ -1,8 +1,8 @@
 #include "Sprite.h"
 
+#include <iostream>
 
-Sprite::Sprite(SDL_Renderer* renderer, const char* filePath, int sourceX, int sourceY, int width, int height, int posX, int posY) :
-	_frameIndex(0)
+Sprite::Sprite(SDL_Renderer* renderer, const char* filePath, int sourceX, int sourceY, int width, int height, int posX, int posY)
 {
 	_spriteSheet = IMG_LoadTexture(renderer, filePath);
 	_sourceRect.x = sourceX;
@@ -20,6 +20,19 @@ Sprite::~Sprite()
 {
 }
 
+
+SDL_Texture * Sprite::loadTexture(char * filePath, SDL_Renderer* renderer)
+{
+	SDL_Texture* texture = IMG_LoadTexture(renderer, filePath);
+
+	if (texture == NULL)
+	{
+		fprintf(stderr, "Could not load texture: %s\n", filePath);
+	}
+
+	return texture;
+}
+
 void Sprite::updatePos(int x, int y)
 {
 }
@@ -32,11 +45,6 @@ SDL_Rect* Sprite::getSourceRect()
 SDL_Rect * Sprite::getDestinationRect()
 {
 	return &_destinationRect;
-}
-
-int Sprite::getFrameIndex()
-{
-	return _frameIndex;
 }
 
 SDL_Texture * Sprite::getSpriteSheet()

@@ -88,3 +88,8 @@ void AnimatedSprite::setupAnimations() {
 	this->addAnimation(3, 0, 0, "RunLeft", 16, 16, Vector2(0, 0));
 	this->addAnimation(3, 0, 16, "RunRight", 16, 16, Vector2(0, 0));
 }
+
+int AnimatedSprite::getFrameIndex()
+{
+	return 0;
+}

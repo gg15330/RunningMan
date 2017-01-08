@@ -53,30 +53,6 @@ void Graphics::clear()
 	SDL_RenderClear(_renderer);
 }
 
-void Graphics::addSpriteSheet(Character character, SDL_Texture* spriteSheet)
-{
-	if (_spriteSheets.count(character) == 0)
-	{
-		_spriteSheets[character] = spriteSheet;
-		if (_spriteSheets[character] == NULL)
-		{
-			fprintf(stderr, "ERROR: Could not load texture\n");
-		}
-	}
-}
-
-SDL_Texture * Graphics::loadTexture(char * filePath)
-{
-	SDL_Texture* texture = IMG_LoadTexture(_renderer, filePath);
-
-	if (texture == NULL)
-	{
-		fprintf(stderr, "Could not load texture: %s\n", filePath);
-	}
-
-	return texture;
-}
-
 SDL_Renderer * Graphics::getRenderer()
 {
 	return _renderer;

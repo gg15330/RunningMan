@@ -39,6 +39,12 @@ public:
 	*/
 	virtual void setupAnimations();
 
+	/// <summary>
+	/// Returns the Sprite's frame index
+	/// </summary>
+	/// <returns>The frame index of the sprite</returns>
+	int getFrameIndex();
+
 protected:
 	double _timeToUpdate;
 	bool _currentAnimationOnce;

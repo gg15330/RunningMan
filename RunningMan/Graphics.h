@@ -36,20 +36,6 @@ public:
 	void draw(Character character, SDL_Rect* sourceRect, SDL_Rect* destinationRect, int elapsedTime);
 
 	/// <summary>
-	/// Adds a spritesheet to the spritesheet map
-	/// </summary>
-	/// <param name="character">The Character enum which corresponds to the spritesheet being added</param>
-	/// <param name="spriteSheet">The spritesheet to add</param>
-	void addSpriteSheet(Character character, SDL_Texture* spriteSheet);
-
-	/// <summary>
-	/// Loads a texture into the renderer
-	/// </summary>
-	/// <param name="filePath">the file path of the image to create a texture from</param>
-	/// <returns>A pointer to the new texture</returns>
-	SDL_Texture* loadTexture(char* filePath);
-
-	/// <summary>
 	/// Returns the renderer
 	/// </summary>
 	/// <returns>A pointer to the SDL_Renderer for this class</returns>

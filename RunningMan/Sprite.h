@@ -23,6 +23,14 @@ public:
 	virtual ~Sprite();
 
 	/// <summary>
+	/// Loads a texture into the renderer
+	/// </summary>
+	/// <param name="filePath">the file path of the image to create a texture from</param>
+	/// <returns>A pointer to the new texture</returns>
+	SDL_Texture* loadTexture(char* filePath, SDL_Renderer* renderer);
+
+
+	/// <summary>
 	/// Updates the spritesheet
 	/// </summary>
 	virtual void updatePos(int x, int y);
@@ -40,12 +48,6 @@ public:
 	SDL_Rect* getDestinationRect();
 
 	/// <summary>
-	/// Returns the Sprite's frame index
-	/// </summary>
-	/// <returns>The frame index of the sprite</returns>
-	int getFrameIndex();
-
-	/// <summary>
 	/// 
 	/// </summary>
 	/// <returns></returns>
@@ -54,7 +56,6 @@ private:
 	SDL_Texture* _spriteSheet;
 	SDL_Rect _sourceRect;
 	SDL_Rect _destinationRect;
-	int _frameIndex;
 };
 
 #endif // !SPRITE_H
