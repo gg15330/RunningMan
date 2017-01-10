@@ -11,7 +11,6 @@ namespace globals
 	const int PLAYER_SPRITE_HEIGHT = 16;
 	const int PIXEL_SCALE = 2;
 	char* const PLAYER_SPRITE_FILEPATH = "resources/MyChar.png";
-
 }
 
 typedef enum Character

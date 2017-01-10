@@ -9,8 +9,8 @@
 
 
 namespace {
-	const int FPS{ 50 };
-	const int MAX_FRAME_TIME{ 5 * 1000 / FPS };
+	const int FPS = 50;
+	constexpr int MAX_FRAME_TIME() { return 5 * 1000 / FPS; }
 }
 
 
@@ -51,7 +51,7 @@ void Game::gameLoop()
 		}
 		const int currentTimeMS = SDL_GetTicks();
 		int elapsedTime = currentTimeMS - lastUpdateTime;
-		_display.draw(MAX_FRAME_TIME);
+		_display.draw(MAX_FRAME_TIME());
 	}
 
 

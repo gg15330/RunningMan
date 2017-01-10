@@ -23,13 +23,6 @@ public:
 	virtual ~Sprite();
 
 	/// <summary>
-	/// Loads a texture into the renderer
-	/// </summary>
-	/// <param name="filePath">the file path of the image to create a texture from</param>
-	/// <returns>A pointer to the new texture</returns>
-	SDL_Texture* loadTexture(char* filePath, SDL_Renderer* renderer);
-
-	/// <summary>
 	/// 
 	/// </summary>
 	/// <param name="x"></param>
@@ -62,9 +55,16 @@ public:
 	SDL_Texture* getTexture();
 
 private:
-	SDL_Texture* _spriteSheet;
+	SDL_Texture* _texture;
 	SDL_Rect _sourceRect;
 	SDL_Rect _destinationRect;
+
+	/// <summary>
+	/// Loads a texture into the renderer
+	/// </summary>
+	/// <param name="filePath">the file path of the image to create a texture from</param>
+	/// <returns>A pointer to the new texture</returns>
+	SDL_Texture* loadTexture(const char* filePath, SDL_Renderer* renderer);
 };
 
 #endif // !SPRITE_H

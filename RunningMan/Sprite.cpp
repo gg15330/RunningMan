@@ -2,17 +2,11 @@
 
 #include <iostream>
 
-Sprite::Sprite(SDL_Renderer* renderer, const char* filePath, int sourceX, int sourceY, int width, int height, int posX, int posY)
+Sprite::Sprite(SDL_Renderer* renderer, const char* filePath, int sourceX, int sourceY, int width, int height, int posX, int posY) :
+	_texture{ loadTexture(filePath, renderer) },
+	_sourceRect{ sourceX, sourceY, width, height },
+	_destinationRect{ posX, posY, width, height }
 {
-	_spriteSheet = IMG_LoadTexture(renderer, filePath);
-	_sourceRect.x = sourceX;
-	_sourceRect.y = sourceY;
-	_sourceRect.w = width;
-	_sourceRect.h = height;
-	_destinationRect.w = width; 
-	_destinationRect.h = height;
-	_destinationRect.x = posX;
-	_destinationRect.y = posY;
 }
 
 
@@ -21,7 +15,7 @@ Sprite::~Sprite()
 }
 
 
-SDL_Texture * Sprite::loadTexture(char * filePath, SDL_Renderer* renderer)
+SDL_Texture * Sprite::loadTexture(const char* filePath, SDL_Renderer* renderer)
 {
 	SDL_Texture* texture = IMG_LoadTexture(renderer, filePath);
 
@@ -57,5 +51,5 @@ SDL_Rect * Sprite::getDestinationRect()
 
 SDL_Texture * Sprite::getTexture()
 {
-	return _spriteSheet;
+	return _texture;
 }
