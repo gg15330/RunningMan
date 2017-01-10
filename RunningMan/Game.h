@@ -3,9 +3,10 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "Graphics.h"
+#include "Display.h"
 #include "Input.h"
 #include "Sprite.h"
+#include "Player.h"
 
 
 class Game
@@ -24,10 +25,8 @@ public:
 	/// </summary>
 	void gameLoop();
 private:
-	Graphics _graphics;
+	Display _display;
 	Input _input;
-	Sprite _player;
-	std::map<Character, Sprite*> _sprites;
 
 	/// <summary>
 	/// 

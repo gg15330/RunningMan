@@ -29,11 +29,19 @@ public:
 	/// <returns>A pointer to the new texture</returns>
 	SDL_Texture* loadTexture(char* filePath, SDL_Renderer* renderer);
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="x"></param>
+	/// <param name="y"></param>
+	void updateSourceRect(int x, int y);
 
 	/// <summary>
-	/// Updates the spritesheet
+	/// 
 	/// </summary>
-	virtual void updatePos(int x, int y);
+	/// <param name="x"></param>
+	/// <param name="y"></param>
+	void updateDestRect(int x, int y);
 
 	/// <summary>
 	/// Get the sprite's current source SDL_Rect
@@ -51,7 +59,8 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	SDL_Texture* getSpriteSheet();
+	SDL_Texture* getTexture();
+
 private:
 	SDL_Texture* _spriteSheet;
 	SDL_Rect _sourceRect;

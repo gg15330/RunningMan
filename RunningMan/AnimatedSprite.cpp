@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Globals.h"
 #include "animatedsprite.h"
-#include "graphics.h"
+#include "Display.h"
 #include "sprite.h"
 
 
@@ -67,7 +67,7 @@ void AnimatedSprite::update(int elapsedTime) {
 	}
 }
 
-void AnimatedSprite::draw(Graphics &graphics, int x, int y) {
+void AnimatedSprite::draw(Display &graphics, int x, int y) {
 	//if (this->_visible) {
 	//	SDL_Rect destinationRectangle;
 	//	destinationRectangle.x = x + this->_offsets[this->_currentAnimation].x;

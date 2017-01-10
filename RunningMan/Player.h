@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef PLAYER_H
+#define PLAYER_H
+
 #include "Sprite.h"
 
 #include <SDL.h>
@@ -17,6 +20,11 @@ public:
 		int posY);
 	~Player();
 
+	/// <summary>
+	/// Updates the spritesheet
+	/// </summary>
+	virtual void updatePos(int x, int y);
+
 	Sprite* getSprite();
 
 private:
@@ -24,3 +32,4 @@ private:
 
 };
 
+#endif // !PLAYER_H

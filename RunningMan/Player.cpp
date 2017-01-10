@@ -18,6 +18,11 @@ Player::~Player()
 {
 }
 
+void Player::updatePos(int x, int y)
+{
+	_sprite.updateDestRect(x, y);
+}
+
 Sprite* Player::getSprite()
 {
 	return &_sprite;

@@ -8,7 +8,7 @@
 #include "Sprite.h"
 #include "Globals.h"
 
-class Graphics;
+class Display;
 
 /* AnimatedSprite class
 * Holds logic for animating sprites
@@ -32,7 +32,7 @@ public:
 	/* void draw
 	* Draws the sprite to the screen
 	*/
-	void draw(Graphics &graphics, int x, int y);
+	void draw(Display &graphics, int x, int y);
 
 	/* void setupAnimations
 	* A required function that sets up all animations for a sprite

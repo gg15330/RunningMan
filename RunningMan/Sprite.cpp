@@ -33,8 +33,16 @@ SDL_Texture * Sprite::loadTexture(char * filePath, SDL_Renderer* renderer)
 	return texture;
 }
 
-void Sprite::updatePos(int x, int y)
+void Sprite::updateSourceRect(int x, int y)
 {
+	_sourceRect.x = x;
+	_sourceRect.y = y;
+}
+
+void Sprite::updateDestRect(int x, int y)
+{
+	_destinationRect.x = x;
+	_destinationRect.y = y;
 }
 
 SDL_Rect* Sprite::getSourceRect()
@@ -47,7 +55,7 @@ SDL_Rect * Sprite::getDestinationRect()
 	return &_destinationRect;
 }
 
-SDL_Texture * Sprite::getSpriteSheet()
+SDL_Texture * Sprite::getTexture()
 {
 	return _spriteSheet;
 }

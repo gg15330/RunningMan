@@ -9,14 +9,19 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-#include <map>
+#include <vector>
 
 
-class Graphics
+class Display
 {
 public:
-	Graphics();
-	~Graphics();
+	Display();
+	~Display();
+
+	/// <summary>
+	/// 
+	/// </summary>
+	void registerSprite(Sprite* sprite);
 
 	/// <summary>
 	/// Initialises SDL components
@@ -28,12 +33,10 @@ public:
 	/// </summary>
 	void quit();
 
-	void updateRect(int x, int y);
-
 	/// <summary>
 	/// Draws everything to the screen
 	/// </summary>
-	void draw(Character character, SDL_Rect* sourceRect, SDL_Rect* destinationRect, int elapsedTime);
+	void draw(int elapsedTime);
 
 	/// <summary>
 	/// Returns the renderer
@@ -43,7 +46,7 @@ public:
 private:
 	SDL_Window* _window;
 	SDL_Renderer* _renderer;
-	std::map<Character, SDL_Texture*> _spriteSheets;
+	std::vector<Sprite*> _sprites;
 
 	/// <summary>
 	/// Draws a texture to a certain part of the screen

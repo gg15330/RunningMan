@@ -1,25 +1,30 @@
-#include "Graphics.h"
+#include "Display.h"
 
 #include <iostream>
 
 
-Graphics::Graphics()
+Display::Display()
 {
 }
 
 
-Graphics::~Graphics()
+Display::~Display()
 {
 }
 
-void Graphics::init()
+void Display::registerSprite(Sprite* sprite)
+{
+	_sprites.push_back(sprite);
+}
+
+void Display::init()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	SDL_CreateWindowAndRenderer(globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT, 0, &_window, &_renderer);
 	SDL_SetWindowTitle(_window, "Running man");
 }
 
-void Graphics::quit()
+void Display::quit()
 {
 	std::cout << "Shutting down SDL components...\n";
 	SDL_DestroyRenderer(_renderer);
@@ -27,33 +32,32 @@ void Graphics::quit()
 	SDL_Quit();
 }
 
-void Graphics::updateRect(int x, int y)
-{
-}
-
-void Graphics::draw(Character character, SDL_Rect* sourceRect, SDL_Rect* destinationRect, int elapsedTime)
+void Display::draw(int elapsedTime)
 {
 	clear();
-	blitSurface(_spriteSheets[character], sourceRect, destinationRect);
+	for each (Sprite* sprite in _sprites)
+	{
+		blitSurface(sprite->getTexture(), sprite->getSourceRect(), sprite->getDestinationRect());
+	}
 	flip();
 }
 
-void Graphics::blitSurface(SDL_Texture* texture, SDL_Rect* sourceRectangle, SDL_Rect* destinationRectangle) 
+void Display::blitSurface(SDL_Texture* texture, SDL_Rect* sourceRectangle, SDL_Rect* destinationRectangle) 
 {
 	SDL_RenderCopy(_renderer, texture, sourceRectangle, destinationRectangle);
 }
 
-void Graphics::flip()
+void Display::flip()
 {
 	SDL_RenderPresent(_renderer);
 }
 
-void Graphics::clear() 
+void Display::clear() 
 {
 	SDL_RenderClear(_renderer);
 }
 
-SDL_Renderer * Graphics::getRenderer()
+SDL_Renderer * Display::getRenderer()
 {
 	return _renderer;
 }
