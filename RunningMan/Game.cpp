@@ -27,7 +27,6 @@ void Game::gameLoop()
 		globals::PLAYER_SPRITE_FILEPATH, 
 		0, 
 		0, 
-		//test
 		globals::PLAYER_SPRITE_WIDTH, 
 		globals::PLAYER_SPRITE_HEIGHT, 
 		STARTING_POSX,
