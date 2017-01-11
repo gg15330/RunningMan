@@ -34,6 +34,7 @@ void Input::processEvents()
 		case SDL_KEYUP:
 			_heldKeys[event.key.keysym.scancode] = false;
 			_releasedKeys[event.key.keysym.scancode] = true;
+			break;
 		case SDL_MOUSEBUTTONDOWN:
 			std::cout << "MOUSEDOWN\n";
 			break;

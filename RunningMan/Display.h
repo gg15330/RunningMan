@@ -48,7 +48,7 @@ public:
 	/// Returns the renderer
 	/// </summary>
 	/// <returns>A pointer to the SDL_Renderer for this class</returns>
-	SDL_Renderer* getRenderer();
+	SDL_Renderer* getRenderer() noexcept;
 
 private:
 	SDL_Window* _window;

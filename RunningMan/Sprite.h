@@ -43,19 +43,19 @@ public:
 	/// Get the sprite's current source SDL_Rect
 	/// </summary>
 	/// <returns>A pointer to the sprite's current source SDL_Rect</returns>
-	SDL_Rect* getSourceRect();
+	SDL_Rect* getSourceRect() noexcept;
 
 	/// <summary>
 	/// Get the sprite's current destination SDL_Rect
 	/// </summary>
 	/// <returns>A pointer to the sprite's current destination SDL_Rect</returns>
-	SDL_Rect* getDestinationRect();
+	SDL_Rect* getDestinationRect() noexcept;
 
 	/// <summary>
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	SDL_Texture* getTexture();
+	SDL_Texture* getTexture() noexcept;
 
 private:
 	SDL_Texture* _texture;
