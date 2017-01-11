@@ -1,6 +1,5 @@
 #include "Sprite.h"
 
-#include <iostream>
 
 Sprite::Sprite(SDL_Renderer* renderer, const char* filePath, int sourceX, int sourceY, int width, int height, int posX, int posY) :
 	_texture{ loadTexture(filePath, renderer) },

@@ -5,10 +5,17 @@
 
 #include "Display.h"
 #include "Input.h"
-#include "Sprite.h"
 #include "Player.h"
 
+#include <iostream>
+#include <algorithm>
 
+#define NOMINMAX
+
+
+/// <summary>
+/// 
+/// </summary>
 class Game
 {
 public:

@@ -3,12 +3,15 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
-#include "Globals.h"
-
 #include <SDL.h>
 #include <SDL_image.h>
 
+#include <iostream>
 
+
+/// <summary>
+/// 
+/// </summary>
 class Sprite
 {
 public:

@@ -1,7 +1,5 @@
 #include "Display.h"
 
-#include <iostream>
-
 
 Display::Display()
 {

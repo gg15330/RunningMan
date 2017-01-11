@@ -7,7 +7,11 @@
 
 #include <SDL.h>
 
-class Player
+
+/// <summary>
+/// 
+/// </summary>
+class Player : public Sprite
 {
 public:
 	Player(SDL_Renderer* renderer,

@@ -3,15 +3,21 @@
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
 
-#include "Globals.h"
 #include "Sprite.h"
+#include "Globals.h"
 
 #include <SDL.h>
 #include <SDL_image.h>
 
+#include <iostream>
 #include <vector>
 
 
+class Sprite;
+
+/// <summary>
+/// 
+/// </summary>
 class Display
 {
 public:
@@ -43,6 +49,7 @@ public:
 	/// </summary>
 	/// <returns>A pointer to the SDL_Renderer for this class</returns>
 	SDL_Renderer* getRenderer();
+
 private:
 	SDL_Window* _window;
 	SDL_Renderer* _renderer;
