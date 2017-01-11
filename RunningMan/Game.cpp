@@ -32,7 +32,7 @@ void Game::gameLoop()
 		STARTING_POSX,
 		STARTING_POSY);
 
-	_display.registerSprite(player.getSprite());
+	_display.registerSprite(&player);
 
 	int x = 0;
 	int y = 0;
