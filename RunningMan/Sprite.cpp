@@ -1,16 +1,27 @@
 #include "Sprite.h"
 
 
+Sprite::Sprite()
+{
+}
+
 Sprite::Sprite(SDL_Renderer* renderer, const char* filePath, int sourceX, int sourceY, int width, int height, int posX, int posY) :
 	_texture{ loadTexture(filePath, renderer) },
 	_sourceRect{ sourceX, sourceY, width, height },
-	_destinationRect{ posX, posY, width, height }
+	_destinationRect{ posX, posY, width, height },
+	_x{ 0 },
+	_y{ 0 }
 {
 }
 
 
 Sprite::~Sprite()
 {
+}
+
+void Sprite::update(int elapsedTime)
+{
+		updateDestRect(_x++, _y++);
 }
 
 
@@ -38,17 +49,17 @@ void Sprite::updateDestRect(int x, int y)
 	_destinationRect.y = y;
 }
 
-SDL_Rect* Sprite::getSourceRect()
+SDL_Rect* Sprite::getSourceRect() noexcept
 {
 	return &_sourceRect;
 }
 
-SDL_Rect * Sprite::getDestinationRect()
+SDL_Rect * Sprite::getDestinationRect() noexcept
 {
 	return &_destinationRect;
 }
 
-SDL_Texture * Sprite::getTexture()
+SDL_Texture * Sprite::getTexture() noexcept
 {
 	return _texture;
 }

@@ -15,6 +15,7 @@
 class Sprite
 {
 public:
+	Sprite();
 	Sprite(SDL_Renderer* renderer,
 		const char* filePath,
 		int sourceX, 
@@ -24,6 +25,11 @@ public:
 		int posX, 
 		int posY);
 	virtual ~Sprite();
+
+	/// <summary>
+	/// 
+	/// </summary>
+	void update(int elapsedTime);
 
 	/// <summary>
 	/// 
@@ -61,6 +67,7 @@ private:
 	SDL_Texture* _texture;
 	SDL_Rect _sourceRect;
 	SDL_Rect _destinationRect;
+	int _x, _y;
 
 	/// <summary>
 	/// Loads a texture into the renderer

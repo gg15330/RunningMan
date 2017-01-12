@@ -55,7 +55,7 @@ void Display::clear()
 	SDL_RenderClear(_renderer);
 }
 
-SDL_Renderer * Display::getRenderer()
+SDL_Renderer * Display::getRenderer() noexcept
 {
 	return _renderer;
 }

@@ -8,7 +8,9 @@ constexpr int STARTING_POSY{ globals::SCREEN_HEIGHT - globals::PLAYER_SPRITE_HEI
 const Vector2 STARTING_POS{ STARTING_POSX, STARTING_POSY };
 
 
-Game::Game()
+Game::Game() :
+	_timeToUpdate{ 10 },
+	_timeElapsed{ 0 }
 {
 }
 
@@ -19,20 +21,19 @@ Game::~Game()
 void Game::init()
 {
 	_display.init();
+	_player = Player(_display.getRenderer(),
+		globals::PLAYER_SPRITE_FILEPATH,
+		0,
+		0,
+		globals::PLAYER_SPRITE_WIDTH,
+		globals::PLAYER_SPRITE_HEIGHT,
+		STARTING_POSX,
+		STARTING_POSY);
 }
 
 void Game::gameLoop()
 {
-	Player player(_display.getRenderer(), 
-		globals::PLAYER_SPRITE_FILEPATH, 
-		0, 
-		0, 
-		globals::PLAYER_SPRITE_WIDTH, 
-		globals::PLAYER_SPRITE_HEIGHT, 
-		STARTING_POSX,
-		STARTING_POSY);
-
-	_display.registerSprite(&player);
+	_display.registerSprite(&_player);
 
 	int x = 0;
 	int y = 0;
@@ -41,11 +42,11 @@ void Game::gameLoop()
 	{
 		_input.clearKeyArrays();
 		_input.processEvents();
-		if (_input.isKeyHeld(SDL_SCANCODE_DOWN))
+		/*if (_input.isKeyHeld(SDL_SCANCODE_DOWN))
 		{
-			player.updatePos(x++, y++);
-		}
-		else if (_input.wasKeyPressed(SDL_SCANCODE_ESCAPE)) 
+			_player.updatePos(x++, y++);
+		}*/
+		/*else*/ if (_input.wasKeyPressed(SDL_SCANCODE_ESCAPE)) 
 		{
 			_display.quit();
 			return;
@@ -56,35 +57,18 @@ void Game::gameLoop()
 		//}
 		const int currentTimeMS = SDL_GetTicks();
 		int elapsedTime = currentTimeMS - lastUpdateTime;
+		update(std::min(elapsedTime, MAX_FRAME_TIME));
+		lastUpdateTime = currentTimeMS;
 		_display.draw(MAX_FRAME_TIME);
 	}
-
-
-
-
-	//_sprites[Character::PLAYER] = &_player;
-	//SDL_Texture* playerSpriteSheet = _graphics.loadTexture(globals::PLAYER_SPRITE_FILEPATH);
-	//_graphics.addSpriteSheet(Character::PLAYER, playerSpriteSheet);
-	//int x = 0;
-	//int y = 0;
-	//int lastUpdateTime = SDL_GetTicks();
-	//while (true)
-	//{
-	//	_input.clearKeyArrays();
-	//	_input.processEvents();
-	//	if (_input.wasKeyPressed(SDL_SCANCODE_ESCAPE)) 
-	//	{
-	//		_graphics.quit();
-	//		return;
-	//	}
-	//	_player.updatePos(x++, y++);
-	//	//_graphics.draw();
-	//	const int currentTimeMS = SDL_GetTicks();
-	//	int elapsedTime = currentTimeMS - lastUpdateTime;
-	//	_graphics.draw(Character::PLAYER, _player.getSourceRect(), _player.getDestinationRect(), std::min(elapsedTime, MAX_FRAME_TIME));
-	//}
 }
 
 void Game::update(int elapsedTime)
 {
+	this->_timeElapsed += elapsedTime;
+	std::cout << _timeElapsed << "\n";
+	if (this->_timeElapsed > this->_timeToUpdate) {
+		_player.update(elapsedTime);
+		_timeElapsed = 0;
+	}
 }

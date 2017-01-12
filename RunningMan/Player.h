@@ -14,6 +14,7 @@
 class Player : public Sprite
 {
 public:
+	Player();
 	Player(SDL_Renderer* renderer, const char* filePath, int sourceX, int sourceY, int width, int height, int posX, int posY);
 	~Player();
 
