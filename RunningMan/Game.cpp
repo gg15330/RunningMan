@@ -2,7 +2,7 @@
 
 
 constexpr int FPS{ 50 };
-constexpr int MAX_FRAME_TIME{ 5 * 1000 / FPS };
+constexpr int MAX_FRAME_TIME{ 1000 / FPS };
 constexpr int STARTING_POSX{ (globals::SCREEN_WIDTH - globals::PLAYER_SPRITE_WIDTH) / 2 };
 constexpr int STARTING_POSY{ globals::SCREEN_HEIGHT - globals::PLAYER_SPRITE_HEIGHT };
 const Vector2 STARTING_POS{ STARTING_POSX, STARTING_POSY };
@@ -10,7 +10,9 @@ const Vector2 STARTING_POS{ STARTING_POSX, STARTING_POSY };
 
 Game::Game() :
 	_timeToUpdate{ 10 },
-	_timeElapsed{ 0 }
+	_timeElapsed{ 0 },
+	_x{ 0 },
+	_y{ 0 }
 {
 }
 
@@ -33,6 +35,7 @@ void Game::init()
 
 void Game::gameLoop()
 {
+	std::cout << _timeToUpdate << std::endl;
 	_display.registerSprite(&_player);
 
 	int x = 0;
@@ -42,19 +45,11 @@ void Game::gameLoop()
 	{
 		_input.clearKeyArrays();
 		_input.processEvents();
-		/*if (_input.isKeyHeld(SDL_SCANCODE_DOWN))
-		{
-			_player.updatePos(x++, y++);
-		}*/
-		/*else*/ if (_input.wasKeyPressed(SDL_SCANCODE_ESCAPE)) 
+		if (_input.wasKeyPressed(SDL_SCANCODE_ESCAPE))
 		{
 			_display.quit();
 			return;
 		}
-		//else if (_input.wasKeyPressed(SDL_SCANCODE_DOWN))
-		//{
-		//	player.updatePos(x++, y++);
-		//}
 		const int currentTimeMS = SDL_GetTicks();
 		int elapsedTime = currentTimeMS - lastUpdateTime;
 		update(std::min(elapsedTime, MAX_FRAME_TIME));
@@ -66,9 +61,8 @@ void Game::gameLoop()
 void Game::update(int elapsedTime)
 {
 	this->_timeElapsed += elapsedTime;
-	std::cout << _timeElapsed << "\n";
 	if (this->_timeElapsed > this->_timeToUpdate) {
-		_player.update(elapsedTime);
+		_player.update(_x++, _y++);
 		_timeElapsed = 0;
 	}
 }

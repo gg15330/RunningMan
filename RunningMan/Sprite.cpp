@@ -19,9 +19,9 @@ Sprite::~Sprite()
 {
 }
 
-void Sprite::update(int elapsedTime)
+void Sprite::update(int x, int y)
 {
-		updateDestRect(_x++, _y++);
+		updateDestRect(x, y);
 }
 
 

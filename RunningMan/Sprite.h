@@ -29,7 +29,7 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	void update(int elapsedTime);
+	void update(int x, int y);
 
 	/// <summary>
 	/// 
