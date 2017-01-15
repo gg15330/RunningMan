@@ -9,6 +9,8 @@
 
 #include <SDL.h>
 
+#include <string>
+
 
 /// <summary>
 /// 
@@ -17,8 +19,7 @@ class Player : public Entity
 {
 public:
 	Player();
-	Player(Sprite& const sprite, int x, int y);
-	Player(SDL_Renderer* renderer, const char* filePath, int sourceX, int sourceY, int width, int height, int posX, int posY);
+	Player(Sprite& const sprite);
 	~Player();
 
 	/// <summary>

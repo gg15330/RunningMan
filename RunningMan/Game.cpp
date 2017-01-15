@@ -1,7 +1,5 @@
 #include "Game.h"
 
-#include <iostream>
-#include <string>
 
 constexpr int FPS{ 50 };
 constexpr int MAX_FRAME_TIME{ 1000 / FPS };
@@ -32,7 +30,7 @@ void Game::init()
 		STARTING_POSX,
 		STARTING_POSY);
 
-	_player = Player(sprite, STARTING_POSX, STARTING_POSY);
+	_player = Player(sprite);
 }
 
 void Game::gameLoop()
@@ -64,7 +62,5 @@ void Game::update(int elapsedTime)
 	if (_input.isKeyHeld(SDL_SCANCODE_LEFT))		{ _player.move(LEFT); }
 	if (_input.isKeyHeld(SDL_SCANCODE_UP))			{ _player.move(UP); }
 	if (_input.isKeyHeld(SDL_SCANCODE_DOWN))		{ _player.move(DOWN); }
-	std::string s = _player.getCoords();
-	std::cout << "coords: " << s;
 	_timeElapsed = 0;
 }

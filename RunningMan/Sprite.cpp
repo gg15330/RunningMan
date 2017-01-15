@@ -8,7 +8,7 @@ Sprite::Sprite()
 Sprite::Sprite(SDL_Renderer* renderer, const char* filePath, int sourceX, int sourceY, int width, int height, int posX, int posY) :
 	_texture{ loadTexture(filePath, renderer) },
 	_sourceRect{ sourceX, sourceY, width, height },
-	_destinationRect{ posX, posY, width, height }
+	_destRect{ posX, posY, width, height }
 {
 }
 
@@ -38,8 +38,8 @@ void Sprite::updateSourceRect(int x, int y)
 
 void Sprite::updateDestRect(int x, int y)
 {
-	_destinationRect.x = x;
-	_destinationRect.y = y;
+	_destRect.x = x;
+	_destRect.y = y;
 }
 
 SDL_Rect* Sprite::getSourceRect() noexcept
@@ -47,9 +47,9 @@ SDL_Rect* Sprite::getSourceRect() noexcept
 	return &_sourceRect;
 }
 
-SDL_Rect * Sprite::getDestinationRect() noexcept
+SDL_Rect * Sprite::getDestRect() noexcept
 {
-	return &_destinationRect;
+	return &_destRect;
 }
 
 SDL_Texture * Sprite::getTexture() noexcept

@@ -50,7 +50,7 @@ public:
 	/// Get the sprite's current destination SDL_Rect
 	/// </summary>
 	/// <returns>A pointer to the sprite's current destination SDL_Rect</returns>
-	SDL_Rect* getDestinationRect() noexcept;
+	SDL_Rect* getDestRect() noexcept;
 
 	/// <summary>
 	/// 
@@ -61,7 +61,7 @@ public:
 private:
 	SDL_Texture* _texture;
 	SDL_Rect _sourceRect;
-	SDL_Rect _destinationRect;
+	SDL_Rect _destRect;
 
 	/// <summary>
 	/// Loads a texture into the renderer

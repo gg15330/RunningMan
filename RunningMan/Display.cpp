@@ -36,7 +36,7 @@ void Display::draw(int elapsedTime)
 	clear();
 	for each (Sprite* sprite in _sprites)
 	{
-		blitSurface(sprite->getTexture(), sprite->getSourceRect(), sprite->getDestinationRect());
+		blitSurface(sprite->getTexture(), sprite->getSourceRect(), sprite->getDestRect());
 	}
 	flip();
 }

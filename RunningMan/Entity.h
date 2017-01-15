@@ -4,6 +4,7 @@
 #define ENTITY_H
 
 #include "Sprite.h"
+#include "Globals.h"
 
 #include <SDL.h>
 
@@ -11,8 +12,7 @@ class Entity
 {
 public:
 	Entity();
-	Entity(Sprite& const sprite, int x, int y);
-	Entity(SDL_Renderer* renderer, const char* filePath, int sourceX, int sourceY, int width, int height, int posX, int posY);
+	Entity(Sprite& const sprite);
 	virtual ~Entity();
 
 	/// <summary>
@@ -21,9 +21,12 @@ public:
 	/// <returns></returns>
 	Sprite* getSprite() noexcept;
 
-	std::string getCoords();
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
+	SDL_Rect* getDestRect() noexcept;
 protected:
-	int _x, _y;
 	Sprite _sprite;
 };
 
