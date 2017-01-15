@@ -1,14 +1,10 @@
 #include "Game.h"
 
-#include "Timer.h"
-
-#include <sstream>
-
 
 constexpr int FPS{ 50 };
 constexpr int MAX_FRAME_TIME{ 1000 / FPS };
-constexpr int STARTING_POSX{ (globals::SCREEN_WIDTH - globals::PLAYER_SPRITE_WIDTH) / 2 };
-constexpr int STARTING_POSY{ globals::SCREEN_HEIGHT - globals::PLAYER_SPRITE_HEIGHT };
+constexpr int STARTING_POSX{ 0 };
+constexpr int STARTING_POSY{ 0 };
 const Vector2 STARTING_POS{ STARTING_POSX, STARTING_POSY };
 
 
@@ -39,21 +35,10 @@ void Game::init()
 
 void Game::gameLoop()
 {
-	std::cout << _timeToUpdate << std::endl;
 	_display.registerSprite(_player.getSprite());
-
-	std::stringstream timeText;
 	int lastUpdateTime = SDL_GetTicks();
-
 	while (true)
 	{
-		//In memory text stream 
-		//Set text to be rendered 
-		timeText.str("");
-		timeText << "Seconds: " << (SDL_GetTicks() / 1000.0f);
-		//Render text 
-		std::cout << timeText.str() << std::endl;
-
 		_input.clearKeyArrays();
 		_input.processEvents();
 		if (_input.wasKeyPressed(SDL_SCANCODE_ESCAPE))
