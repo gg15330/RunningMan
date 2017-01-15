@@ -27,7 +27,7 @@ void Input::processEvents()
 		switch (event.type)
 		{
 		case SDL_KEYDOWN:
-			std::cout << "KEYDOWN\n";
+			std::cout << "KEYDOWN: " << event.key.keysym.scancode << "\n";
 			_pressedKeys[event.key.keysym.scancode] = true;
 			_heldKeys[event.key.keysym.scancode] = true;
 			break;

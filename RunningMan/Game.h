@@ -31,10 +31,11 @@ public:
 	/// Main game loop
 	/// </summary>
 	void gameLoop();
-
 private:
 	Display _display;
 	Input _input;
+	Player _player;
+	int _timeElapsed, _timeToUpdate;
 
 	/// <summary>
 	/// 

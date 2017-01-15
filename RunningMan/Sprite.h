@@ -15,6 +15,7 @@
 class Sprite
 {
 public:
+	Sprite();
 	Sprite(SDL_Renderer* renderer,
 		const char* filePath,
 		int sourceX, 

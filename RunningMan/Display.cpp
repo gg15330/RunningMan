@@ -18,6 +18,7 @@ void Display::registerSprite(Sprite* sprite)
 void Display::init()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
+	//SDL_CreateRenderer(&_window, -1, SDL_RENDERER_ACCELERATED);
 	SDL_CreateWindowAndRenderer(globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT, 0, &_window, &_renderer);
 	SDL_SetWindowTitle(_window, "Running man");
 }
@@ -55,7 +56,7 @@ void Display::clear()
 	SDL_RenderClear(_renderer);
 }
 
-SDL_Renderer * Display::getRenderer()
+SDL_Renderer * Display::getRenderer() noexcept
 {
 	return _renderer;
 }
