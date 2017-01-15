@@ -6,8 +6,8 @@ Player::Player() :
 {
 }
 
-Player::Player(Sprite & const sprite) :
-	Entity(sprite)
+Player::Player(Sprite & const sprite, int x, int y) :
+	Entity(sprite, x, y)
 {
 }
 

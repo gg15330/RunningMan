@@ -11,7 +11,7 @@ class Entity
 {
 public:
 	Entity();
-	Entity(Sprite& const sprite);
+	Entity(Sprite& const sprite, int x, int y);
 	Entity(SDL_Renderer* renderer, const char* filePath, int sourceX, int sourceY, int width, int height, int posX, int posY);
 	virtual ~Entity();
 
@@ -21,6 +21,7 @@ public:
 	/// <returns></returns>
 	Sprite* getSprite() noexcept;
 
+	std::string getCoords();
 protected:
 	int _x, _y;
 	Sprite _sprite;
