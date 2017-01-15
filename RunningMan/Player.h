@@ -3,6 +3,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include "Entity.h"
 #include "Sprite.h"
 #include "Globals.h"
 
@@ -12,17 +13,13 @@
 /// <summary>
 /// 
 /// </summary>
-class Player : public Sprite
+class Player : public Entity
 {
 public:
 	Player();
+	Player(Sprite& const sprite);
 	Player(SDL_Renderer* renderer, const char* filePath, int sourceX, int sourceY, int width, int height, int posX, int posY);
 	~Player();
-
-	/// <summary>
-	/// Updates the spritesheet
-	/// </summary>
-	virtual void updatePos(int x, int y);
 
 	/// <summary>
 	/// 

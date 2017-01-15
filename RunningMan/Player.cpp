@@ -1,12 +1,18 @@
 #include "Player.h"
 
 
-Player::Player()
+Player::Player() : 
+	Entity()
+{
+}
+
+Player::Player(Sprite & const sprite) :
+	Entity(sprite)
 {
 }
 
 Player::Player(SDL_Renderer* renderer, const char* filePath, int sourceX, int sourceY, int width, int height, int posX, int posY) :
-	Sprite(renderer, filePath, sourceX, sourceY, width, height, posX, posY)
+	Entity(renderer, filePath, 0, 0, globals::PLAYER_SPRITE_WIDTH, globals::PLAYER_SPRITE_HEIGHT, 0, 0)
 {
 }
 
@@ -15,20 +21,15 @@ Player::~Player()
 {
 }
 
-void Player::updatePos(int x, int y)
-{
-	updateDestRect(x, y);
-}
 
 void Player::move(Direction direction)
 {
 	switch (direction)
 	{
-	case LEFT:		updateDestRect(--_x, _y); break;
-	case RIGHT:		updateDestRect(++_x, _y); break;
-	case UP:		updateDestRect(_x, --_y); break;
-	case DOWN:		updateDestRect(_x, ++_y); break;
+	case LEFT:		_sprite.updateDestRect(--_x, _y); break;
+	case RIGHT:		_sprite.updateDestRect(++_x, _y); break;
+	case UP:		_sprite.updateDestRect(_x, --_y); break;
+	case DOWN:		_sprite.updateDestRect(_x, ++_y); break;
 	default:		break;
 	}
 }
-

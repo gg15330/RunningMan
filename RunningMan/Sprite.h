@@ -29,11 +29,6 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	void update(int x, int y);
-
-	/// <summary>
-	/// 
-	/// </summary>
 	/// <param name="x"></param>
 	/// <param name="y"></param>
 	void updateSourceRect(int x, int y);
@@ -62,9 +57,6 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	SDL_Texture* getTexture() noexcept;
-
-protected:
-	int _x, _y;
 
 private:
 	SDL_Texture* _texture;

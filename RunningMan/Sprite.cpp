@@ -8,20 +8,13 @@ Sprite::Sprite()
 Sprite::Sprite(SDL_Renderer* renderer, const char* filePath, int sourceX, int sourceY, int width, int height, int posX, int posY) :
 	_texture{ loadTexture(filePath, renderer) },
 	_sourceRect{ sourceX, sourceY, width, height },
-	_destinationRect{ posX, posY, width, height },
-	_x{ 0 },
-	_y{ 0 }
+	_destinationRect{ posX, posY, width, height }
 {
 }
 
 
 Sprite::~Sprite()
 {
-}
-
-void Sprite::update(int x, int y)
-{
-		updateDestRect(x, y);
 }
 
 

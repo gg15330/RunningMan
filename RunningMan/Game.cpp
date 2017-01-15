@@ -25,20 +25,22 @@ Game::~Game()
 void Game::init()
 {
 	_display.init();
-	_player = Player(_display.getRenderer(),
-		globals::PLAYER_SPRITE_FILEPATH,
-		0,
-		0,
+	Sprite sprite = Sprite(_display.getRenderer(), 
+		globals::PLAYER_SPRITE_FILEPATH, 
+		0, 
+		0, 
 		globals::PLAYER_SPRITE_WIDTH,
 		globals::PLAYER_SPRITE_HEIGHT,
 		STARTING_POSX,
 		STARTING_POSY);
+
+	_player = Player(sprite);
 }
 
 void Game::gameLoop()
 {
 	std::cout << _timeToUpdate << std::endl;
-	_display.registerSprite(&_player);
+	_display.registerSprite(_player.getSprite());
 
 	std::stringstream timeText;
 	int lastUpdateTime = SDL_GetTicks();
