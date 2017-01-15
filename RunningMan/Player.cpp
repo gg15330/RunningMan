@@ -20,3 +20,15 @@ void Player::updatePos(int x, int y)
 	updateDestRect(x, y);
 }
 
+void Player::move(Direction direction)
+{
+	switch (direction)
+	{
+	case LEFT:		updateDestRect(--_x, _y); break;
+	case RIGHT:		updateDestRect(++_x, _y); break;
+	case UP:		updateDestRect(_x, --_y); break;
+	case DOWN:		updateDestRect(_x, ++_y); break;
+	default:		break;
+	}
+}
+

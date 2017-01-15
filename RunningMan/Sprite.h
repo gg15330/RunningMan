@@ -63,11 +63,13 @@ public:
 	/// <returns></returns>
 	SDL_Texture* getTexture() noexcept;
 
+protected:
+	int _x, _y;
+
 private:
 	SDL_Texture* _texture;
 	SDL_Rect _sourceRect;
 	SDL_Rect _destinationRect;
-	int _x, _y;
 
 	/// <summary>
 	/// Loads a texture into the renderer

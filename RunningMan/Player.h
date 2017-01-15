@@ -4,6 +4,7 @@
 #define PLAYER_H
 
 #include "Sprite.h"
+#include "Globals.h"
 
 #include <SDL.h>
 
@@ -22,6 +23,12 @@ public:
 	/// Updates the spritesheet
 	/// </summary>
 	virtual void updatePos(int x, int y);
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="direction"></param>
+	void move(Direction direction);
 };
 
 #endif // !PLAYER_H
