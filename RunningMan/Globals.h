@@ -3,6 +3,9 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
+/// <summary>
+/// Global constant variables
+/// </summary>
 namespace globals
 {
 	const int SCREEN_WIDTH = 640;

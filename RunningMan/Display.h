@@ -9,14 +9,11 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-#include <iostream>
 #include <vector>
 
 
-class Sprite;
-
 /// <summary>
-/// 
+/// Creates SDL window/renderer components and draws <see cref="Sprite"/> objects
 /// </summary>
 class Display
 {
@@ -25,7 +22,7 @@ public:
 	~Display();
 
 	/// <summary>
-	/// 
+	/// Adds a <see cref="Sprite"/> to the list
 	/// </summary>
 	void registerSprite(Sprite* sprite);
 
@@ -47,7 +44,7 @@ public:
 	/// <summary>
 	/// Returns the renderer
 	/// </summary>
-	/// <returns>A pointer to the SDL_Renderer for this class</returns>
+	/// <returns></returns>
 	SDL_Renderer* getRenderer() noexcept;
 
 private:

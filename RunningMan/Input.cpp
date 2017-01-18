@@ -13,7 +13,8 @@ Input::~Input()
 }
 
 
-void Input::clearKeyArrays() {
+void Input::clearKeyArrays() 
+{
 	_pressedKeys.clear();
 	_releasedKeys.clear();
 }
@@ -21,7 +22,6 @@ void Input::clearKeyArrays() {
 void Input::processEvents()
 {
 	SDL_Event event;
-
 	while (SDL_PollEvent(&event))
 	{
 		switch (event.type)

@@ -3,27 +3,22 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "Entity.h"
-#include "Sprite.h"
 #include "Globals.h"
-
-#include <SDL.h>
-
-#include <string>
+#include "Entity.h"
 
 
 /// <summary>
-/// 
+/// Class representing the player's character
 /// </summary>
 class Player : public Entity
 {
 public:
 	Player();
-	Player(Sprite& const sprite);
+	Player(Sprite const & sprite);
 	~Player();
 
 	/// <summary>
-	/// 
+	/// Change this <see cref="Player"/>'s coordinates
 	/// </summary>
 	/// <param name="direction"></param>
 	void move(Direction direction);

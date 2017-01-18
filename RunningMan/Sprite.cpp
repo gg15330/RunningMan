@@ -6,10 +6,10 @@ Sprite::Sprite()
 }
 
 Sprite::Sprite(SDL_Renderer* renderer, const char* filePath, int sourceX, int sourceY, int width, int height, int posX, int posY) :
-	_texture{ loadTexture(filePath, renderer) },
-	_sourceRect{ sourceX, sourceY, width, height },
-	_destRect{ posX, posY, width, height }
+	_sourceRect		{ sourceX, sourceY, width, height },
+	_destRect		{ posX, posY, width, height }
 {
+	loadTexture(filePath, renderer);
 }
 
 
@@ -18,16 +18,13 @@ Sprite::~Sprite()
 }
 
 
-SDL_Texture * Sprite::loadTexture(const char* filePath, SDL_Renderer* renderer)
+void Sprite::loadTexture(const char* filePath, SDL_Renderer* renderer)
 {
-	SDL_Texture* texture = IMG_LoadTexture(renderer, filePath);
-
-	if (texture == NULL)
+	_texture = IMG_LoadTexture(renderer, filePath);
+	if (_texture == NULL)
 	{
 		fprintf(stderr, "Could not load texture: %s\n", filePath);
 	}
-
-	return texture;
 }
 
 void Sprite::updateSourceRect(int x, int y)

@@ -1,22 +1,23 @@
 #include "Game.h"
 
 
-constexpr int FPS{ 50 };
-constexpr int MAX_FRAME_TIME{ 1000 / FPS };
-constexpr int STARTING_POSX{ 0 };
-constexpr int STARTING_POSY{ 0 };
-const Vector2 STARTING_POS{ STARTING_POSX, STARTING_POSY };
+constexpr int FPS				{ 50 };
+constexpr int MAX_FRAME_TIME	{ 1000 / FPS };
+constexpr int STARTING_POSX		{ 0 };
+constexpr int STARTING_POSY		{ 0 };
+const Vector2 STARTING_POS		{ STARTING_POSX, STARTING_POSY };
 
 
 Game::Game() :
-	_timeToUpdate{ 10 },
-	_timeElapsed{ 0 }
+	_timeToUpdate	{ 10 },
+	_timeElapsed	{ 0 }
 {
 }
 
 Game::~Game()
 {
 }
+
 
 void Game::init()
 {

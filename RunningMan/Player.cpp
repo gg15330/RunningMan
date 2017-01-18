@@ -6,7 +6,8 @@ Player::Player() :
 {
 }
 
-Player::Player(Sprite & const sprite) :
+
+Player::Player(Sprite const & sprite) :
 	Entity(sprite)
 {
 }

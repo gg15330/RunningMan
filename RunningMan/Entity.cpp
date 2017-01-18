@@ -1,12 +1,11 @@
 #include "Entity.h"
 
-#include <string>
 
 Entity::Entity()
 {
 }
 
-Entity::Entity(Sprite & const sprite) :
+Entity::Entity(Sprite const & sprite) :
 	_sprite	{ sprite }
 {
 }
@@ -27,4 +26,3 @@ SDL_Rect* Entity::getDestRect() noexcept
 {
 	return _sprite.getDestRect();
 }
-

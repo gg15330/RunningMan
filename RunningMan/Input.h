@@ -8,6 +8,9 @@
 #include <map>
 
 
+/// <summary>
+/// Processes and keeps track of player input
+/// </summary>
 class Input
 {
 public:
@@ -44,6 +47,7 @@ public:
 	/// <param name="key">The SDL_Scancode of the key to check</param>
 	/// <returns>True if held, False if not</returns>
 	bool isKeyHeld(SDL_Scancode key);
+
 private:
 	std::map<SDL_Scancode, bool> _heldKeys;
 	std::map<SDL_Scancode, bool> _pressedKeys;

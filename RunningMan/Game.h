@@ -7,14 +7,13 @@
 #include "Input.h"
 #include "Player.h"
 
-#include <iostream>
 #include <algorithm>
 
 #define NOMINMAX
 
 
 /// <summary>
-/// 
+/// Controls game logic
 /// </summary>
 class Game
 {
@@ -38,9 +37,9 @@ private:
 	int _timeElapsed, _timeToUpdate;
 
 	/// <summary>
-	/// 
+	/// Updates all game objects
 	/// </summary>
-	/// <param name="elapsedTime"></param>
+	/// <param name="elapsedTime">The amount of time since the last update (ms)</param>
 	void update(int elapsedTime);
 };
 
