@@ -31,11 +31,6 @@ public:
 	/// </summary>
 	void gameLoop();
 private:
-	Display _display;
-	Input _input;
-	Player _player;
-	int _timeElapsed, _timeToUpdate;
-
 	/// <summary>
 	/// Updates all game objects
 	/// </summary>

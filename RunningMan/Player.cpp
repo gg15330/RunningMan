@@ -8,7 +8,7 @@ Player::Player() :
 
 
 Player::Player(Sprite const & sprite) :
-	Entity(sprite)
+	Entity{ sprite }
 {
 }
 

@@ -1,6 +1,12 @@
 #include "Game.h"
 
 
+Display _display;
+Input _input;
+Player _player;
+
+int _timeElapsed				{ 0 };
+constexpr int _timeToUpdate		{ 10 };
 constexpr int FPS				{ 50 };
 constexpr int MAX_FRAME_TIME	{ 1000 / FPS };
 constexpr int STARTING_POSX		{ 0 };
@@ -8,9 +14,7 @@ constexpr int STARTING_POSY		{ 0 };
 const Vector2 STARTING_POS		{ STARTING_POSX, STARTING_POSY };
 
 
-Game::Game() :
-	_timeToUpdate	{ 10 },
-	_timeElapsed	{ 0 }
+Game::Game()
 {
 }
 
@@ -30,7 +34,6 @@ void Game::init()
 		globals::PLAYER_SPRITE_HEIGHT,
 		STARTING_POSX,
 		STARTING_POSY);
-
 	_player = Player(sprite);
 }
 
@@ -55,10 +58,10 @@ void Game::gameLoop()
 	}
 }
 
-void Game::update(int elapsedTime)
+void Game::update(int timeElapsed)
 {
-	this->_timeElapsed += elapsedTime;
-	if (this->_timeElapsed < this->_timeToUpdate)	{ return; }
+	_timeElapsed += timeElapsed;
+	if (_timeElapsed < _timeToUpdate)	{ return; }
 	if (_input.isKeyHeld(SDL_SCANCODE_RIGHT))		{ _player.move(RIGHT); }
 	if (_input.isKeyHeld(SDL_SCANCODE_LEFT))		{ _player.move(LEFT); }
 	if (_input.isKeyHeld(SDL_SCANCODE_UP))			{ _player.move(UP); }
