@@ -6,6 +6,7 @@
 #include "Display.h"
 #include "Input.h"
 #include "Player.h"
+#include "Terrain.h"
 
 #include <algorithm>
 
@@ -31,6 +32,11 @@ public:
 	/// </summary>
 	void gameLoop();
 private:
+	Display _display;
+	Input _input;
+	Player _player;
+	Terrain _platform;
+
 	/// <summary>
 	/// Updates all game objects
 	/// </summary>

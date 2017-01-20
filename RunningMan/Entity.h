@@ -23,19 +23,13 @@ public:
 	/// Returns this <see cref="Entity"/>'s <see cref="Sprite"/> object
 	/// </summary>
 	/// <returns></returns>
-	virtual Sprite* getSprite() noexcept;
+	Sprite* getSprite() noexcept;
 
 	/// <summary>
 	/// Returns this <see cref="Entity"/>'s destination <see cref="SDL_Rect"/> object
 	/// </summary>
 	/// <returns></returns>
-	virtual SDL_Rect* getDestRect() noexcept;
-
-	/// <summary>
-	/// Change this <see cref="Entity"/>'s coordinates
-	/// </summary>
-	/// <param name="direction">The <see cref="Direction"/> to move</param>
-	virtual void move(Direction direction) = 0;
+	SDL_Rect* getDestRect() noexcept;
 
 protected:
 	Sprite _sprite;

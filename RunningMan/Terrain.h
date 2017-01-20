@@ -12,6 +12,7 @@
 class Terrain : public Entity
 {
 public:
+	Terrain();
 	Terrain(Sprite const &sprite);
 	~Terrain();
 

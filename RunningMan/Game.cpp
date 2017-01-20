@@ -1,10 +1,6 @@
 #include "Game.h"
 
 
-Display _display;
-Input _input;
-Player _player;
-
 int _timeElapsed				{ 0 };
 constexpr int _timeToUpdate		{ 10 };
 constexpr int FPS				{ 50 };
@@ -25,22 +21,34 @@ Game::~Game()
 
 void Game::init()
 {
-	_display.init();
-	Sprite sprite = Sprite(_display.getRenderer(), 
-		globals::PLAYER_SPRITE_FILEPATH, 
-		0, 
-		0, 
+	_display.init();	
+	Sprite playerSprite{ Sprite{ _display.getRenderer(),
+		globals::PLAYER_SPRITE_FILEPATH,
+		0,
+		0,
 		globals::PLAYER_SPRITE_WIDTH,
 		globals::PLAYER_SPRITE_HEIGHT,
 		STARTING_POSX,
-		STARTING_POSY);
-	_player = Player(sprite);
+		STARTING_POSY } };
+	Sprite platformSprite{ Sprite{ _display.getRenderer(),
+		globals::PLATFORM_SPRITE_FILEPATH,
+		0,
+		500,
+		globals::PLATFORM_SPRITE_WIDTH,
+		globals::PLATFORM_SPRITE_HEIGHT,
+		STARTING_POSX,
+		STARTING_POSY } };
+	_platform = Terrain{ platformSprite };
+	_player = Player{ playerSprite };
+	_display.registerSprite(_player.getSprite());
+	_display.registerSprite(_platform.getSprite());
 }
 
 void Game::gameLoop()
 {
-	_display.registerSprite(_player.getSprite());
 	int lastUpdateTime = SDL_GetTicks();
+	int currentTimeMS = 0;
+	int elapsedTime	= 0;
 	while (true)
 	{
 		_input.clearKeyArrays();
@@ -50,8 +58,8 @@ void Game::gameLoop()
 			_display.quit();
 			return;
 		}
-		const int currentTimeMS = SDL_GetTicks();
-		int elapsedTime = currentTimeMS - lastUpdateTime;
+		currentTimeMS = SDL_GetTicks();
+		elapsedTime	= currentTimeMS - lastUpdateTime;
 		update(std::min(elapsedTime, MAX_FRAME_TIME));
 		lastUpdateTime = currentTimeMS;
 		_display.draw(MAX_FRAME_TIME);
@@ -61,7 +69,7 @@ void Game::gameLoop()
 void Game::update(int timeElapsed)
 {
 	_timeElapsed += timeElapsed;
-	if (_timeElapsed < _timeToUpdate)	{ return; }
+	if (_timeElapsed < _timeToUpdate)				{ return; }
 	if (_input.isKeyHeld(SDL_SCANCODE_RIGHT))		{ _player.move(RIGHT); }
 	if (_input.isKeyHeld(SDL_SCANCODE_LEFT))		{ _player.move(LEFT); }
 	if (_input.isKeyHeld(SDL_SCANCODE_UP))			{ _player.move(UP); }
