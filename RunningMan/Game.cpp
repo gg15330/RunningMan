@@ -5,9 +5,6 @@ int _timeElapsed				{ 0 };
 constexpr int _timeToUpdate		{ 10 };
 constexpr int FPS				{ 50 };
 constexpr int MAX_FRAME_TIME	{ 1000 / FPS };
-constexpr int STARTING_POSX		{ 0 };
-constexpr int STARTING_POSY		{ 0 };
-const Vector2 STARTING_POS		{ STARTING_POSX, STARTING_POSY };
 
 
 Game::Game()
@@ -24,20 +21,20 @@ void Game::init()
 	_display.init();	
 	Sprite playerSprite{ Sprite{ _display.getRenderer(),
 		globals::PLAYER_SPRITE_FILEPATH,
-		0,
-		0,
+		globals::PLAYER_SOURCE_POS.x,
+		globals::PLAYER_SOURCE_POS.y,
 		globals::PLAYER_SPRITE_WIDTH,
 		globals::PLAYER_SPRITE_HEIGHT,
-		STARTING_POSX,
-		STARTING_POSY } };
+		globals::PLAYER_STARTING_POS.x,
+		globals::PLAYER_STARTING_POS.y } };
 	Sprite platformSprite{ Sprite{ _display.getRenderer(),
 		globals::PLATFORM_SPRITE_FILEPATH,
-		0,
-		500,
+		globals::PLATFORM_SOURCE_POS.x,
+		globals::PLATFORM_SOURCE_POS.y,
 		globals::PLATFORM_SPRITE_WIDTH,
 		globals::PLATFORM_SPRITE_HEIGHT,
-		STARTING_POSX,
-		STARTING_POSY } };
+		globals::PLATFORM_STARTING_POS.x,
+		globals::PLATFORM_STARTING_POS.y } };
 	_platform = Terrain{ platformSprite };
 	_player = Player{ playerSprite };
 	_display.registerSprite(_player.getSprite());
