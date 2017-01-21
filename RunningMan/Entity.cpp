@@ -32,6 +32,16 @@ SDL_Rect* Entity::getDestRect() noexcept
 	return _sprite.getDestRect();
 }
 
+Vector2 Entity::getVelocity() const noexcept
+{
+	return _velocity;
+}
+
+void Entity::setVelocity(Vector2 velocity)
+{
+	_velocity = velocity;
+}
+
 void Entity::setSprite(Sprite const & sprite)
 {
 	_sprite = sprite;

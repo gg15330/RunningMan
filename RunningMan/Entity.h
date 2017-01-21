@@ -31,6 +31,23 @@ public:
 	/// <returns></returns>
 	SDL_Rect* getDestRect() noexcept;
 
+	/// <summary>
+	/// Getter for this <see cref="Entity"/>'s velocity
+	/// </summary>
+	/// <param name="velocity"></param>
+	/// <returns></returns>
+	Vector2 getVelocity() const noexcept;
+
+	/// <summary>
+	/// Setter for this <see cref="Entity"/>'s velocity
+	/// </summary>
+	/// <param name="velocity"></param>
+	void setVelocity(Vector2 velocity);
+	
+	/// <summary>
+	/// Setter for this <see cref="Entity"/>'s Sprite
+	/// </summary>
+	/// <param name="sprite"></param>
 	void setSprite(Sprite const & sprite);
 
 protected:

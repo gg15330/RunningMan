@@ -22,6 +22,20 @@ public:
 	/// </summary>
 	/// <param name="direction"></param>
 	void move(Direction direction);
+
+	/// <summary>
+	/// Returns this <see cref="Player"/>'s _jumping property
+	/// </summary>
+	/// <returns></returns>
+	bool getJumping() const noexcept;
+
+	/// <summary>
+	/// Set whether the <see cref="Player"/> is jumping
+	/// </summary>
+	/// <param name="jumping"></param>
+	void setJumping(bool jumping);
+private:
+	bool _jumping;
 };
 
 #endif // !PLAYER_H

@@ -7,7 +7,8 @@ Player::Player()
 
 
 Player::Player(Sprite const & sprite, bool passable = false) :
-	Entity{ sprite, passable }
+	Entity		{ sprite, passable },
+	_jumping	{ false }
 {
 }
 
@@ -29,4 +30,14 @@ void Player::move(Direction direction)
 	}
 	//std::string s = getDestRect();
 	//std::cout << "coords: " << s;
+}
+
+bool Player::getJumping() const noexcept
+{
+	return _jumping;
+}
+
+void Player::setJumping(bool jumping)
+{
+	_jumping = jumping;
 }
