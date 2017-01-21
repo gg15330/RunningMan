@@ -8,7 +8,8 @@ Entity::Entity()
 
 Entity::Entity(Sprite const & sprite, bool passable = false) :
 	_sprite		{ sprite },
-	_passable	{ passable }
+	_passable	{ passable },
+	_velocity	{ 0, 0 }
 {
 	Entity{};
 }

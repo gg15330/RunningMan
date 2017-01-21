@@ -36,6 +36,7 @@ public:
 protected:
 	Sprite _sprite;
 	bool _passable;
+	Vector2 _velocity;
 };
 
 #endif // !ENTITY_H

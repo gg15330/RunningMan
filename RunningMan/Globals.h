@@ -28,10 +28,13 @@ namespace globals
 	const int SCREEN_HEIGHT							= 480;
 	const int PIXEL_SCALE							= 2;
 
+	//Physics
+	const int GRAVITY								= 2;
+
 	//Player
 	char* const PLAYER_SPRITE_FILEPATH				= "resources/MyChar.png";
 	const Vector2 PLAYER_SOURCE_POS					{ 0, 0 };
-	const Vector2 PLAYER_STARTING_POS				{ 0, 0 };
+	const Vector2 PLAYER_STARTING_POS				{ 150, 50 };
 	const int PLAYER_SPRITE_WIDTH					= 16;
 	const int PLAYER_SPRITE_HEIGHT					= 16;
 
