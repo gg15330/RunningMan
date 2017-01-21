@@ -15,9 +15,6 @@ public:
 	Terrain();
 	Terrain(Sprite const &sprite);
 	~Terrain();
-
-private:
-	bool _passable;
 };
 
 #endif // !TERRAIN_H

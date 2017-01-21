@@ -24,25 +24,25 @@ struct Vector2 {
 namespace globals
 {
 	//Screen
-	const int SCREEN_WIDTH = 640;
-	const int SCREEN_HEIGHT = 480;
+	const int SCREEN_WIDTH							= 640;
+	const int SCREEN_HEIGHT							= 480;
 
 	//Player
-	char* const PLAYER_SPRITE_FILEPATH = "resources/MyChar.png";
-	const Vector2 PLAYER_SOURCE_POS{ 0, 0 };
-	const Vector2 PLAYER_STARTING_POS{ 0, 0 };
-	const int PLAYER_SPRITE_WIDTH = 16;
-	const int PLAYER_SPRITE_HEIGHT = 16;
+	char* const PLAYER_SPRITE_FILEPATH				= "resources/MyChar.png";
+	const Vector2 PLAYER_SOURCE_POS					{ 0, 0 };
+	const Vector2 PLAYER_STARTING_POS				{ 0, 0 };
+	const int PLAYER_SPRITE_WIDTH					= 16;
+	const int PLAYER_SPRITE_HEIGHT					= 16;
 
 	//Platform
-	char const* const PLATFORM_SPRITE_FILEPATH = "resources/Platform.png";
-	const Vector2 PLATFORM_SOURCE_POS{ 480, 0 };
-	const Vector2 PLATFORM_STARTING_POS{ 100, 100 };
-	const int PLATFORM_SPRITE_WIDTH = 95;
-	const int PLATFORM_SPRITE_HEIGHT = 63;
+	char const* const PLATFORM_SPRITE_FILEPATH		= "resources/Platform.png";
+	const Vector2 PLATFORM_SOURCE_POS				{ 480, 0 };
+	const Vector2 PLATFORM_STARTING_POS				{ 100, 100 };
+	const int PLATFORM_SPRITE_WIDTH					= 95;
+	const int PLATFORM_SPRITE_HEIGHT				= 63;
 	
 
-	const int PIXEL_SCALE = 2;
+	const int PIXEL_SCALE							= 2;
 }
 
 /// <summary>

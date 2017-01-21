@@ -17,7 +17,7 @@ class Entity
 public:
 	Entity();
 	Entity(Sprite const & sprite);
-	virtual ~Entity() = 0;
+	~Entity();
 
 	/// <summary>
 	/// Returns this <see cref="Entity"/>'s <see cref="Sprite"/> object
@@ -33,6 +33,7 @@ public:
 
 protected:
 	Sprite _sprite;
+	bool _passable;
 };
 
 #endif // !ENTITY_H

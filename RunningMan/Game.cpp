@@ -19,6 +19,13 @@ Game::~Game()
 void Game::init()
 {
 	_display.init();	
+}
+
+void Game::gameLoop()
+{
+	int lastUpdateTime = SDL_GetTicks();
+	int currentTimeMS = 0;
+	int elapsedTime	= 0;
 	Sprite playerSprite{ Sprite{ _display.getRenderer(),
 		globals::PLAYER_SPRITE_FILEPATH,
 		globals::PLAYER_SOURCE_POS.x,
@@ -35,17 +42,12 @@ void Game::init()
 		globals::PLATFORM_SPRITE_HEIGHT,
 		globals::PLATFORM_STARTING_POS.x,
 		globals::PLATFORM_STARTING_POS.y } };
-	_platform = Terrain{ platformSprite };
-	_player = Player{ playerSprite };
-	_display.registerSprite(_player.getSprite());
-	_display.registerSprite(_platform.getSprite());
-}
-
-void Game::gameLoop()
-{
-	int lastUpdateTime = SDL_GetTicks();
-	int currentTimeMS = 0;
-	int elapsedTime	= 0;
+	Terrain platform{ platformSprite };
+	std::cout << "Terrain created: " << &platform << std::endl;
+	Player player{ playerSprite };
+	std::cout << "Player created: " << &player << std::endl;
+	_display.registerSprite(player.getSprite());
+	_display.registerSprite(platform.getSprite());
 	while (true)
 	{
 		_input.clearKeyArrays();
@@ -67,9 +69,9 @@ void Game::update(int timeElapsed)
 {
 	_timeElapsed += timeElapsed;
 	if (_timeElapsed < _timeToUpdate)				{ return; }
-	if (_input.isKeyHeld(SDL_SCANCODE_RIGHT))		{ _player.move(RIGHT); }
-	if (_input.isKeyHeld(SDL_SCANCODE_LEFT))		{ _player.move(LEFT); }
-	if (_input.isKeyHeld(SDL_SCANCODE_UP))			{ _player.move(UP); }
-	if (_input.isKeyHeld(SDL_SCANCODE_DOWN))		{ _player.move(DOWN); }
+	//if (_input.isKeyHeld(SDL_SCANCODE_RIGHT))		{ player.move(RIGHT); }
+	//if (_input.isKeyHeld(SDL_SCANCODE_LEFT))		{ player.move(LEFT); }
+	//if (_input.isKeyHeld(SDL_SCANCODE_UP))			{ player.move(UP); }
+	//if (_input.isKeyHeld(SDL_SCANCODE_DOWN))		{ player.move(DOWN); }
 	_timeElapsed = 0;
 }

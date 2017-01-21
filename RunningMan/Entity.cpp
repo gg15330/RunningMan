@@ -8,6 +8,7 @@ Entity::Entity()
 Entity::Entity(Sprite const & sprite) :
 	_sprite	{ sprite }
 {
+	std::cout << "Creating Entity: " << this << std::endl;
 }
 
 
