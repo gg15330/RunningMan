@@ -26,6 +26,7 @@ namespace globals
 	//Screen
 	const int SCREEN_WIDTH							= 640;
 	const int SCREEN_HEIGHT							= 480;
+	const int PIXEL_SCALE							= 2;
 
 	//Player
 	char* const PLAYER_SPRITE_FILEPATH				= "resources/MyChar.png";
@@ -40,9 +41,6 @@ namespace globals
 	const Vector2 PLATFORM_STARTING_POS				{ 100, 100 };
 	const int PLATFORM_SPRITE_WIDTH					= 95;
 	const int PLATFORM_SPRITE_HEIGHT				= 63;
-	
-
-	const int PIXEL_SCALE							= 2;
 }
 
 /// <summary>

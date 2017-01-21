@@ -66,10 +66,45 @@ void Game::gameLoop()
 void Game::update(int timeElapsed)
 {
 	_timeElapsed += timeElapsed;
-	if (_timeElapsed < _timeToUpdate)				{ return; }
-	if (_input.isKeyHeld(SDL_SCANCODE_RIGHT))		{ _player.move(RIGHT); }
-	if (_input.isKeyHeld(SDL_SCANCODE_LEFT))		{ _player.move(LEFT); }
-	if (_input.isKeyHeld(SDL_SCANCODE_UP))			{ _player.move(UP); }
-	if (_input.isKeyHeld(SDL_SCANCODE_DOWN))		{ _player.move(DOWN); }
+	SDL_Rect* platformRect = _platform.getDestRect();
+	SDL_Rect* playerRect = _player.getDestRect();
+	//SDL_Rect playerRect = { _player.getDestRect()->x - 1,
+	//	_player.getDestRect()->y - 1,
+	//	_player.getDestRect()->w + 2,
+	//	_player.getDestRect()->h + 2 };
+	if (_timeElapsed < _timeToUpdate) { return; }
+	if (_input.isKeyHeld(SDL_SCANCODE_RIGHT) && 
+		!collision(platformRect, playerRect))		
+	{ 
+		_player.move(RIGHT); 
+	}
+	if (_input.isKeyHeld(SDL_SCANCODE_LEFT) && 
+		!collision(platformRect, playerRect))
+	{ 
+		_player.move(LEFT); 
+	}
+	if (_input.isKeyHeld(SDL_SCANCODE_UP) && 
+		!collision(platformRect, playerRect))
+	{
+		_player.move(UP); 
+	}
+	if (_input.isKeyHeld(SDL_SCANCODE_DOWN) && 
+		!collision(platformRect, playerRect))		
+	{ 
+		_player.move(DOWN); 
+	}
 	_timeElapsed = 0;
 }
+
+bool Game::collision(const SDL_Rect * rect1, const SDL_Rect *rect2)
+{
+	if (rect1->x - 1 < (rect2->x + rect2->w) &&
+		(rect1->x + rect1->w) > rect2->x - 1 &&
+		rect1->y - 1 < (rect2->y + rect2->h) &&
+		(rect1->h + rect1->y) > rect2->y - 1)
+	{
+		return true;
+	}
+	return false;
+}
+
