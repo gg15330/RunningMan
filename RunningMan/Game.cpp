@@ -66,32 +66,26 @@ void Game::gameLoop()
 void Game::update(int timeElapsed)
 {
 	_timeElapsed += timeElapsed;
-	SDL_Rect* platformRect = _platform.getDestRect();
-	SDL_Rect* playerRect = _player.getDestRect();
-	//SDL_Rect playerRect = { _player.getDestRect()->x - 1,
-	//	_player.getDestRect()->y - 1,
-	//	_player.getDestRect()->w + 2,
-	//	_player.getDestRect()->h + 2 };
 	if (_timeElapsed < _timeToUpdate) { return; }
-	if (_input.isKeyHeld(SDL_SCANCODE_RIGHT) && 
-		!SDL_HasIntersection(platformRect, playerRect))		
+	if (_input.isKeyHeld(SDL_SCANCODE_RIGHT))		
 	{ 
 		_player.move(RIGHT);
+		if (SDL_HasIntersection(_platform.getDestRect(), _player.getDestRect())) { _player.move(LEFT); }
 	}
-	if (_input.isKeyHeld(SDL_SCANCODE_LEFT) && 
-		!SDL_HasIntersection(platformRect, playerRect))
-	{ 
-		_player.move(LEFT); 
-	}
-	if (_input.isKeyHeld(SDL_SCANCODE_UP) && 
-		!SDL_HasIntersection(platformRect, playerRect))
+	if (_input.isKeyHeld(SDL_SCANCODE_LEFT))
 	{
-		_player.move(UP); 
+		_player.move(LEFT);
+		if (SDL_HasIntersection(_platform.getDestRect(), _player.getDestRect())) { _player.move(RIGHT); }
 	}
-	if (_input.isKeyHeld(SDL_SCANCODE_DOWN) && 
-		!SDL_HasIntersection(platformRect, playerRect))
-	{ 
-		_player.move(DOWN); 
+	if (_input.isKeyHeld(SDL_SCANCODE_UP))
+	{
+		_player.move(UP);
+		if (SDL_HasIntersection(_platform.getDestRect(), _player.getDestRect())) { _player.move(DOWN); }
+	}
+	if (_input.isKeyHeld(SDL_SCANCODE_DOWN))
+	{
+		_player.move(DOWN);
+		if (SDL_HasIntersection(_platform.getDestRect(), _player.getDestRect())) { _player.move(UP); }
 	}
 	_timeElapsed = 0;
 }
