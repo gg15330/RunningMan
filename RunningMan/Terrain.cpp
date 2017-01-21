@@ -6,9 +6,8 @@ Terrain::Terrain()
 }
 
 Terrain::Terrain(Sprite const & sprite) :
-	Entity{ sprite }
+	Entity{ sprite, false }
 {
-	_passable = false;
 }
 
 Terrain::~Terrain()

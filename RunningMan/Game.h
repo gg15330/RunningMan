@@ -34,6 +34,8 @@ public:
 private:
 	Display _display;
 	Input _input;
+	Player _player;
+	Terrain _platform;
 
 	/// <summary>
 	/// Updates all game objects

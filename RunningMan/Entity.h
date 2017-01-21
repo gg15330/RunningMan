@@ -16,7 +16,7 @@ class Entity
 {
 public:
 	Entity();
-	Entity(Sprite const & sprite);
+	Entity(Sprite const & sprite, bool passable);
 	~Entity();
 
 	/// <summary>
@@ -30,6 +30,8 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	SDL_Rect* getDestRect() noexcept;
+
+	void setSprite(Sprite const & sprite);
 
 protected:
 	Sprite _sprite;

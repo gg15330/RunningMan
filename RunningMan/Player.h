@@ -14,7 +14,7 @@ class Player : public Entity
 {
 public:
 	Player();
-	Player(Sprite const & sprite);
+	Player(Sprite const & sprite, bool passable);
 	~Player();
 
 	/// <summary>

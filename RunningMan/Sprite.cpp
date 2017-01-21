@@ -9,12 +9,14 @@ Sprite::Sprite(SDL_Renderer* renderer, const char* filePath, int sourceX, int so
 	_sourceRect		{ sourceX, sourceY, width, height },
 	_destRect		{ posX, posY, width, height }
 {
+	std::cout << "Creating Sprite: " << this << std::endl;
 	loadTexture(filePath, renderer);
 }
 
 
 Sprite::~Sprite()
 {
+	std::cout << "Destroying sprite: " << this << std::endl;
 }
 
 

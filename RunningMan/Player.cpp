@@ -1,14 +1,13 @@
 #include "Player.h"
 
 
-Player::Player() : 
-	Entity()
+Player::Player()
 {
 }
 
 
-Player::Player(Sprite const & sprite) :
-	Entity{ sprite }
+Player::Player(Sprite const & sprite, bool passable = false) :
+	Entity{ sprite, passable }
 {
 }
 

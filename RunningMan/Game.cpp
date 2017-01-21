@@ -18,22 +18,7 @@ Game::~Game()
 
 void Game::init()
 {
-	_display.init();	
-}
-
-void Game::gameLoop()
-{
-	int lastUpdateTime = SDL_GetTicks();
-	int currentTimeMS = 0;
-	int elapsedTime	= 0;
-	Sprite playerSprite{ Sprite{ _display.getRenderer(),
-		globals::PLAYER_SPRITE_FILEPATH,
-		globals::PLAYER_SOURCE_POS.x,
-		globals::PLAYER_SOURCE_POS.y,
-		globals::PLAYER_SPRITE_WIDTH,
-		globals::PLAYER_SPRITE_HEIGHT,
-		globals::PLAYER_STARTING_POS.x,
-		globals::PLAYER_STARTING_POS.y } };
+	_display.init();
 	Sprite platformSprite{ Sprite{ _display.getRenderer(),
 		globals::PLATFORM_SPRITE_FILEPATH,
 		globals::PLATFORM_SOURCE_POS.x,
@@ -42,12 +27,25 @@ void Game::gameLoop()
 		globals::PLATFORM_SPRITE_HEIGHT,
 		globals::PLATFORM_STARTING_POS.x,
 		globals::PLATFORM_STARTING_POS.y } };
-	Terrain platform{ platformSprite };
-	std::cout << "Terrain created: " << &platform << std::endl;
-	Player player{ playerSprite };
-	std::cout << "Player created: " << &player << std::endl;
-	_display.registerSprite(player.getSprite());
-	_display.registerSprite(platform.getSprite());
+	Sprite playerSprite{ Sprite{ _display.getRenderer(),
+		globals::PLAYER_SPRITE_FILEPATH,
+		globals::PLAYER_SOURCE_POS.x,
+		globals::PLAYER_SOURCE_POS.y,
+		globals::PLAYER_SPRITE_WIDTH,
+		globals::PLAYER_SPRITE_HEIGHT,
+		globals::PLAYER_STARTING_POS.x,
+		globals::PLAYER_STARTING_POS.y } };
+	_platform.setSprite(platformSprite);
+	_player.setSprite(playerSprite);
+	_display.registerSprite(_platform.getSprite());
+	_display.registerSprite(_player.getSprite());
+}
+
+void Game::gameLoop()
+{
+	int lastUpdateTime = SDL_GetTicks();
+	int currentTimeMS = 0;
+	int elapsedTime	= 0;
 	while (true)
 	{
 		_input.clearKeyArrays();
@@ -69,9 +67,9 @@ void Game::update(int timeElapsed)
 {
 	_timeElapsed += timeElapsed;
 	if (_timeElapsed < _timeToUpdate)				{ return; }
-	//if (_input.isKeyHeld(SDL_SCANCODE_RIGHT))		{ player.move(RIGHT); }
-	//if (_input.isKeyHeld(SDL_SCANCODE_LEFT))		{ player.move(LEFT); }
-	//if (_input.isKeyHeld(SDL_SCANCODE_UP))			{ player.move(UP); }
-	//if (_input.isKeyHeld(SDL_SCANCODE_DOWN))		{ player.move(DOWN); }
+	if (_input.isKeyHeld(SDL_SCANCODE_RIGHT))		{ _player.move(RIGHT); }
+	if (_input.isKeyHeld(SDL_SCANCODE_LEFT))		{ _player.move(LEFT); }
+	if (_input.isKeyHeld(SDL_SCANCODE_UP))			{ _player.move(UP); }
+	if (_input.isKeyHeld(SDL_SCANCODE_DOWN))		{ _player.move(DOWN); }
 	_timeElapsed = 0;
 }
