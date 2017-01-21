@@ -42,14 +42,6 @@ private:
 	/// </summary>
 	/// <param name="elapsedTime">The amount of time since the last update (ms)</param>
 	void update(int elapsedTime);
-
-	/// <summary>
-	/// Detects a collision between two <see cref="SDL_Rect"/> objects
-	/// </summary>
-	/// <param name="ent1"></param>
-	/// <param name="ent2"></param>
-	/// <returns>True if a collision is found, false if not</returns>
-	bool collision(const SDL_Rect* rect1, const SDL_Rect* rect2);
 };
 
 #endif // !GAME_H
