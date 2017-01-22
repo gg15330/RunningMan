@@ -67,52 +67,59 @@ void Game::update(int timeElapsed)
 {
 	_timeElapsed += timeElapsed;
 	if (_timeElapsed < _timeToUpdate) { return; }
-	_player.setVelocity(Vector2{ 0, globals::GRAVITY });
-	_player.move();
-	if (SDL_HasIntersection(_platform.getDestRect(), _player.getDestRect()))
+	SDL_Rect oldPlayerRect = SDL_Rect
 	{
-		_player.setVelocity(Vector2{ 0, -(globals::GRAVITY) });
-		_player.move();
-	}
+		_player.getDestRect()->x,
+		_player.getDestRect()->y,
+		_player.getDestRect()->w,
+		_player.getDestRect()->h
+	};
+		
+
+	//Gravity
+	//_player.setVelocity(Vector2{ _player.getVelocity().x, globals::GRAVITY });
+	
+	//Left/right
 	if (_input.isKeyHeld(SDL_SCANCODE_RIGHT))		
-	{ 
-		_player.setVelocity(Vector2{ 1, 0 });
-		_player.move();
-		if (SDL_HasIntersection(_platform.getDestRect(), _player.getDestRect())) 
+	{
+		SDL_Rect newPlayerRect = SDL_Rect
 		{
-			_player.setVelocity(Vector2{ -1, 0 });
-			_player.move(); 
+			oldPlayerRect.x + 1,
+			oldPlayerRect.y,
+			oldPlayerRect.w,
+			oldPlayerRect.h
+		};
+		if (!SDL_HasIntersection(_platform.getDestRect(), &newPlayerRect)) 
+		{
+			_player.setVelocity(Vector2{ 1, 0 });
+			_player.updatePos();
 		}
 	}
 	if (_input.isKeyHeld(SDL_SCANCODE_LEFT))
 	{
-		_player.setVelocity(Vector2{ -1, 0 });
-		_player.move();
-		if (SDL_HasIntersection(_platform.getDestRect(), _player.getDestRect())) 
+		SDL_Rect newPlayerRect = SDL_Rect
 		{
-			_player.setVelocity(Vector2{ 1, 0 });
-			_player.move(); 
+			oldPlayerRect.x - 1,
+			oldPlayerRect.y,
+			oldPlayerRect.w,
+			oldPlayerRect.h
+		};
+		if (!SDL_HasIntersection(_platform.getDestRect(), &newPlayerRect))
+		{
+			_player.setVelocity(Vector2{ -1, 0 });
+			_player.updatePos();
 		}
-	}
+	}		
+
 	//if (_input.isKeyHeld(SDL_SCANCODE_UP))
 	//{
-	//	_player.setVelocity(Vector2{ 0, -1 });
-	//	_player.move();
-	//	if (SDL_HasIntersection(_platform.getDestRect(), _player.getDestRect())) 
+	//	if (!_player.jumping())
 	//	{
-	//		_player.setVelocity(Vector2{ 0, 1 });
-	//		_player.move(); 
+	//		_player.setJumping(true);
+	//		_player.setVelocity(Vector2(_player.getVelocity().x, -10));
+	//		_player.updatePos();
 	//	}
-	//}
-	//if (_input.isKeyHeld(SDL_SCANCODE_DOWN))
-	//{
-	//	_player.setVelocity(Vector2{ 0, 1 });
-	//	_player.move();
-	//	if (SDL_HasIntersection(_platform.getDestRect(), _player.getDestRect())) 
-	//	{
-	//		_player.setVelocity(Vector2{ 0, -1 });
-	//		_player.move(); 
-	//	}
+	//	_player.setVelocity((Vector2(_player.getVelocity().x, _player.getVelocity().y + globals::GRAVITY)));
 	//}
 	_timeElapsed = 0;
 }

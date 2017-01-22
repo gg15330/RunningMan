@@ -18,13 +18,13 @@ Player::~Player()
 }
 
 
-void Player::move()
+void Player::updatePos()
 {
 	_sprite.getDestRect()->x += _velocity.x;
 	_sprite.getDestRect()->y += _velocity.y;
 }
 
-bool Player::getJumping() const noexcept
+bool Player::jumping() const noexcept
 {
 	return _jumping;
 }

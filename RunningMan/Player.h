@@ -20,13 +20,13 @@ public:
 	/// <summary>
 	/// Change this <see cref="Player"/>'s coordinates
 	/// </summary>
-	void move();
+	void updatePos();
 
 	/// <summary>
 	/// Returns this <see cref="Player"/>'s _jumping property
 	/// </summary>
 	/// <returns></returns>
-	bool getJumping() const noexcept;
+	bool jumping() const noexcept;
 
 	/// <summary>
 	/// Set whether the <see cref="Player"/> is jumping

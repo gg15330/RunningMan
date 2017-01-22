@@ -34,7 +34,7 @@ namespace globals
 	//Player
 	char* const PLAYER_SPRITE_FILEPATH				= "resources/MyChar.png";
 	const Vector2 PLAYER_SOURCE_POS					{ 0, 0 };
-	const Vector2 PLAYER_STARTING_POS				{ 150, 50 };
+	const Vector2 PLAYER_STARTING_POS				{ 250, 150 };
 	const int PLAYER_SPRITE_WIDTH					= 16;
 	const int PLAYER_SPRITE_HEIGHT					= 16;
 
