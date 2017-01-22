@@ -67,26 +67,53 @@ void Game::update(int timeElapsed)
 {
 	_timeElapsed += timeElapsed;
 	if (_timeElapsed < _timeToUpdate) { return; }
+	_player.setVelocity(Vector2{ 0, globals::GRAVITY });
+	_player.move();
+	if (SDL_HasIntersection(_platform.getDestRect(), _player.getDestRect()))
+	{
+		_player.setVelocity(Vector2{ 0, -(globals::GRAVITY) });
+		_player.move();
+	}
 	if (_input.isKeyHeld(SDL_SCANCODE_RIGHT))		
 	{ 
-		_player.move(RIGHT);
-		if (SDL_HasIntersection(_platform.getDestRect(), _player.getDestRect())) { _player.move(LEFT); }
+		_player.setVelocity(Vector2{ 1, 0 });
+		_player.move();
+		if (SDL_HasIntersection(_platform.getDestRect(), _player.getDestRect())) 
+		{
+			_player.setVelocity(Vector2{ -1, 0 });
+			_player.move(); 
+		}
 	}
 	if (_input.isKeyHeld(SDL_SCANCODE_LEFT))
 	{
-		_player.move(LEFT);
-		if (SDL_HasIntersection(_platform.getDestRect(), _player.getDestRect())) { _player.move(RIGHT); }
+		_player.setVelocity(Vector2{ -1, 0 });
+		_player.move();
+		if (SDL_HasIntersection(_platform.getDestRect(), _player.getDestRect())) 
+		{
+			_player.setVelocity(Vector2{ 1, 0 });
+			_player.move(); 
+		}
 	}
-	if (_input.isKeyHeld(SDL_SCANCODE_UP))
-	{
-		_player.move(UP);
-		if (SDL_HasIntersection(_platform.getDestRect(), _player.getDestRect())) { _player.move(DOWN); }
-	}
-	if (_input.isKeyHeld(SDL_SCANCODE_DOWN))
-	{
-		_player.move(DOWN);
-		if (SDL_HasIntersection(_platform.getDestRect(), _player.getDestRect())) { _player.move(UP); }
-	}
+	//if (_input.isKeyHeld(SDL_SCANCODE_UP))
+	//{
+	//	_player.setVelocity(Vector2{ 0, -1 });
+	//	_player.move();
+	//	if (SDL_HasIntersection(_platform.getDestRect(), _player.getDestRect())) 
+	//	{
+	//		_player.setVelocity(Vector2{ 0, 1 });
+	//		_player.move(); 
+	//	}
+	//}
+	//if (_input.isKeyHeld(SDL_SCANCODE_DOWN))
+	//{
+	//	_player.setVelocity(Vector2{ 0, 1 });
+	//	_player.move();
+	//	if (SDL_HasIntersection(_platform.getDestRect(), _player.getDestRect())) 
+	//	{
+	//		_player.setVelocity(Vector2{ 0, -1 });
+	//		_player.move(); 
+	//	}
+	//}
 	_timeElapsed = 0;
 }
 

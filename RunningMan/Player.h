@@ -20,8 +20,7 @@ public:
 	/// <summary>
 	/// Change this <see cref="Player"/>'s coordinates
 	/// </summary>
-	/// <param name="direction"></param>
-	void move(Direction direction);
+	void move();
 
 	/// <summary>
 	/// Returns this <see cref="Player"/>'s _jumping property

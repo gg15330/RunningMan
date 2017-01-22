@@ -18,18 +18,10 @@ Player::~Player()
 }
 
 
-void Player::move(Direction direction)
+void Player::move()
 {
-	switch (direction)
-	{
-	case LEFT:		_sprite.getDestRect()->x--; break;
-	case RIGHT:		_sprite.getDestRect()->x++; break;
-	case UP:		_sprite.getDestRect()->y--; break;
-	case DOWN:		_sprite.getDestRect()->y++; break;
-	default:		break;
-	}
-	//std::string s = getDestRect();
-	//std::cout << "coords: " << s;
+	_sprite.getDestRect()->x += _velocity.x;
+	_sprite.getDestRect()->y += _velocity.y;
 }
 
 bool Player::getJumping() const noexcept
