@@ -5,11 +5,23 @@ Sprite::Sprite()
 {
 }
 
-Sprite::Sprite(SDL_Renderer* renderer, const char* filePath, int sourceX, int sourceY, int width, int height, int posX, int posY) :
-	_sourceRect		{ sourceX, sourceY, width, height },
-	_destRect		{ posX, posY, width, height }
+Sprite::Sprite(SDL_Renderer* renderer, const char* const filePath, const float sourceX, const float sourceY, const int width, const int height, const float posX, const float posY)
 {
 	std::cout << "Creating Sprite: " << this << std::endl;
+	_sourceRect = SDL_Rect 
+	{ 
+		static_cast<int>(sourceX), 
+		static_cast<int>(sourceY), 
+		width, 
+		height 
+	};
+	_destRect = SDL_Rect 
+	{ 
+		static_cast<int>(posX), 
+		static_cast<int>(posY), 
+		width, 
+		height 
+	};
 	loadTexture(filePath, renderer);
 }
 

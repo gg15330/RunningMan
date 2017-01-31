@@ -8,11 +8,11 @@
 /// Struct for coordinates
 /// </summary>
 struct Vector2 {
-	int x, y;
+	float x, y;
 	Vector2()
 	{
 	}
-	Vector2(int x, int y) :
+	Vector2(float x, float y) :
 		x(x), y(y)
 	{
 	}
@@ -29,19 +29,20 @@ namespace globals
 	const int PIXEL_SCALE							= 2;
 
 	//Physics
-	const int GRAVITY								= 2;
+	const float GRAVITY								= 1.0f;
+	const float GRAVITY_CAP							= 10.0f;
 
 	//Player
-	char* const PLAYER_SPRITE_FILEPATH				= "resources/MyChar.png";
-	const Vector2 PLAYER_SOURCE_POS					{ 0, 0 };
-	const Vector2 PLAYER_STARTING_POS				{ 250, 150 };
+	const char* const PLAYER_SPRITE_FILEPATH		= "resources/MyChar.png";
+	const Vector2 PLAYER_SOURCE_POS					{ 0.0f, 0.0f };
+	const Vector2 PLAYER_STARTING_POS				{ 250.0f, 150.0f };
 	const int PLAYER_SPRITE_WIDTH					= 16;
 	const int PLAYER_SPRITE_HEIGHT					= 16;
 
 	//Platform
-	char const* const PLATFORM_SPRITE_FILEPATH		= "resources/Platform.png";
-	const Vector2 PLATFORM_SOURCE_POS				{ 480, 0 };
-	const Vector2 PLATFORM_STARTING_POS				{ 100, 100 };
+	const char* const PLATFORM_SPRITE_FILEPATH		= "resources/Platform.png";
+	const Vector2 PLATFORM_SOURCE_POS				{ 480.0f, 0.0f };
+	const Vector2 PLATFORM_STARTING_POS				{ 100.0f, 100.0f };
 	const int PLATFORM_SPRITE_WIDTH					= 95;
 	const int PLATFORM_SPRITE_HEIGHT				= 63;
 }

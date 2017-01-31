@@ -23,6 +23,17 @@ public:
 	void updatePos();
 
 	/// <summary>
+	/// Get this <see cref="Player"/>'s velocity
+	/// </summary>
+	/// <returns></returns>
+	Vector2 velocity() const noexcept;
+
+	/// <summary>
+	/// Set this <see cref="Player"/>'s velocity
+	/// </summary>
+	void updateVel(const Vector2 acceleration);
+
+	/// <summary>
 	/// Returns this <see cref="Player"/>'s _jumping property
 	/// </summary>
 	/// <returns></returns>
@@ -35,6 +46,7 @@ public:
 	void setJumping(bool jumping);
 private:
 	bool _jumping;
+	Vector2 _velocity;
 };
 
 #endif // !PLAYER_H

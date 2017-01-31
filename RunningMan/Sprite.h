@@ -17,13 +17,13 @@ class Sprite
 public:
 	Sprite();
 	Sprite(SDL_Renderer* renderer,
-		const char* filePath,
-		int sourceX, 
-		int sourceY, 
-		int width, 
-		int height, 
-		int posX, 
-		int posY);
+		const char* const filePath,
+		const float sourceX, 
+		const float sourceY,
+		const int width,
+		const int height,
+		const float posX,
+		const float posY);
 	virtual ~Sprite();
 
 	/// <summary>

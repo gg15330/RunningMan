@@ -67,60 +67,10 @@ void Game::update(int timeElapsed)
 {
 	_timeElapsed += timeElapsed;
 	if (_timeElapsed < _timeToUpdate) { return; }
-	SDL_Rect oldPlayerRect = SDL_Rect
-	{
-		_player.getDestRect()->x,
-		_player.getDestRect()->y,
-		_player.getDestRect()->w,
-		_player.getDestRect()->h
-	};
-		
-
-	//Gravity
-	//_player.setVelocity(Vector2{ _player.getVelocity().x, globals::GRAVITY });
 	
-	//Left/right
-	if (_input.isKeyHeld(SDL_SCANCODE_RIGHT))		
-	{
-		SDL_Rect newPlayerRect = SDL_Rect
-		{
-			oldPlayerRect.x + 1,
-			oldPlayerRect.y,
-			oldPlayerRect.w,
-			oldPlayerRect.h
-		};
-		if (!SDL_HasIntersection(_platform.getDestRect(), &newPlayerRect)) 
-		{
-			_player.setVelocity(Vector2{ 1, 0 });
-			_player.updatePos();
-		}
-	}
-	if (_input.isKeyHeld(SDL_SCANCODE_LEFT))
-	{
-		SDL_Rect newPlayerRect = SDL_Rect
-		{
-			oldPlayerRect.x - 1,
-			oldPlayerRect.y,
-			oldPlayerRect.w,
-			oldPlayerRect.h
-		};
-		if (!SDL_HasIntersection(_platform.getDestRect(), &newPlayerRect))
-		{
-			_player.setVelocity(Vector2{ -1, 0 });
-			_player.updatePos();
-		}
-	}		
 
-	//if (_input.isKeyHeld(SDL_SCANCODE_UP))
-	//{
-	//	if (!_player.jumping())
-	//	{
-	//		_player.setJumping(true);
-	//		_player.setVelocity(Vector2(_player.getVelocity().x, -10));
-	//		_player.updatePos();
-	//	}
-	//	_player.setVelocity((Vector2(_player.getVelocity().x, _player.getVelocity().y + globals::GRAVITY)));
-	//}
+
+
 	_timeElapsed = 0;
 }
 
