@@ -69,6 +69,13 @@ private:
 	/// <param name="filePath">the file path of the image to create a texture from</param>
 	/// <param name="renderer">The SDL_Renderer to load the image to</param>
 	void loadTexture(const char* filePath, SDL_Renderer* renderer);
+
+	/// <summary>
+	/// Helper function to round floats to int
+	/// </summary>
+	/// <param name="f"></param>
+	/// <returns></returns>
+	int roundToInt(const float f);
 };
 
 #endif // !SPRITE_H

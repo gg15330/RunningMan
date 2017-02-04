@@ -21,8 +21,12 @@ Player::~Player()
 
 void Player::updatePos()
 {
-	_sprite.getDestRect()->x += static_cast<int>(_velocity.x);
-	_sprite.getDestRect()->y += static_cast<int>(_velocity.y);
+	_position += _velocity;
+}
+
+Vector2 Player::position() const noexcept
+{
+	return _position;
 }
 
 Vector2 Player::velocity() const noexcept
@@ -30,9 +34,9 @@ Vector2 Player::velocity() const noexcept
 	return _velocity;
 }
 
-void Player::updateVel(const Vector2 velocity)
+void Player::updateVel(const Vector2& acceleration)
 {
-	_velocity = velocity;
+	_velocity += acceleration;
 }
 
 bool Player::jumping() const noexcept

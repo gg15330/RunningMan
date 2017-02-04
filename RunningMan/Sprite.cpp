@@ -10,15 +10,15 @@ Sprite::Sprite(SDL_Renderer* renderer, const char* const filePath, const float s
 	std::cout << "Creating Sprite: " << this << std::endl;
 	_sourceRect = SDL_Rect 
 	{ 
-		static_cast<int>(sourceX), 
-		static_cast<int>(sourceY), 
+		roundToInt(sourceX), 
+		roundToInt(sourceY), 
 		width, 
 		height 
 	};
 	_destRect = SDL_Rect 
 	{ 
-		static_cast<int>(posX), 
-		static_cast<int>(posY), 
+		roundToInt(posX), 
+		roundToInt(posY), 
 		width, 
 		height 
 	};
@@ -39,6 +39,11 @@ void Sprite::loadTexture(const char* filePath, SDL_Renderer* renderer)
 	{
 		fprintf(stderr, "Could not load texture: %s\n", filePath);
 	}
+}
+
+int Sprite::roundToInt(const float f)
+{
+	return static_cast<int>(round(f));
 }
 
 void Sprite::updateSourceRect(int x, int y)

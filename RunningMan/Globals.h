@@ -9,12 +9,19 @@
 /// </summary>
 struct Vector2 {
 	float x, y;
+	
 	Vector2()
 	{
 	}
+	
 	Vector2(float x, float y) :
 		x(x), y(y)
 	{
+	}
+
+	Vector2 operator+=(const Vector2& v)
+	{
+		return { (x + v.x), (y + v.y) };
 	}
 };
 
