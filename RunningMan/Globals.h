@@ -19,6 +19,11 @@ struct Vector2 {
 	{
 	}
 
+	Vector2 operator+(const Vector2& v)
+	{
+		return *this += v;
+	}
+
 	Vector2 operator+=(const Vector2& v)
 	{
 		return { (x + v.x), (y + v.y) };
@@ -36,7 +41,7 @@ namespace globals
 	const int PIXEL_SCALE							= 2;
 
 	//Physics
-	const float GRAVITY								= 1.0f;
+	const Vector2 GRAVITY							{ 0.0f, 1.0f };
 	const float GRAVITY_CAP							= 10.0f;
 
 	//Player

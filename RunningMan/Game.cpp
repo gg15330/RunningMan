@@ -66,11 +66,18 @@ void Game::gameLoop()
 void Game::update(int timeElapsed)
 {
 	_timeElapsed += timeElapsed;
-	if (_timeElapsed < _timeToUpdate) { return; }
-	
+	if (_timeElapsed < _timeToUpdate)			{ return; }
 
+	if (_input.isKeyHeld(SDL_SCANCODE_LEFT))	{ _player.updateVel({ -1.0f, 0.0f }); }
+	if (_input.isKeyHeld(SDL_SCANCODE_RIGHT))	{ _player.updateVel({ 1.0f, 0.0f }); }
+	if (_input.isKeyHeld(SDL_SCANCODE_UP))		{ _player.updateVel({ 0.0f, -1.0f }); }
+	if (_input.isKeyHeld(SDL_SCANCODE_DOWN))	{ _player.updateVel({ -1.0f, 1.0f }); }
 
-
+	//else if (_input.isKeyHeld(SDL_SCANCODE_LEFT))	{ _player.move(LEFT); }
+	//else if (_input.isKeyHeld(SDL_SCANCODE_RIGHT))	{ _player.move(RIGHT); }
+	//else if (_input.isKeyHeld(SDL_SCANCODE_UP))		{ _player.move(UP); }
+	//else if (_input.isKeyHeld(SDL_SCANCODE_DOWN))	{ _player.move(DOWN); }
+	_player.updatePos();
 	_timeElapsed = 0;
 }
 

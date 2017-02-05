@@ -6,6 +6,10 @@
 #include "Globals.h"
 #include "Entity.h"
 
+#include <algorithm>
+
+#define NOMINMAX
+
 
 /// <summary>
 /// Class representing the player's character
@@ -16,6 +20,12 @@ public:
 	Player();
 	Player(Sprite const & sprite, bool passable);
 	~Player();
+
+	/// <summary>
+	/// Moves this <see cref="Player"/> in a given <see cref="Direction"/>
+	/// </summary>
+	/// <param name="direction"></param>
+	void move(Direction direction);
 
 	/// <summary>
 	/// Change this <see cref="Player"/>'s coordinates

@@ -1,6 +1,9 @@
 #include "Player.h"
 
 
+constexpr float MAX_HORIZONTAL_SPEED = 2.0f;
+
+
 Player::Player()
 {
 }
@@ -19,9 +22,23 @@ Player::~Player()
 }
 
 
+void Player::move(Direction direction)
+{
+	switch (direction)
+	{
+	case LEFT:		updateVel(Vector2{ -1.0f, 0.0f }); break;
+	case RIGHT:		updateVel(Vector2{ 1.0f, 0.0f }); break;
+	case UP:		updateVel(Vector2{ 0.0f, -1.0f }); break;
+	case DOWN:		updateVel(Vector2{ 0.0f, 1.0f }); break;
+	default:		break;
+	}
+	//updatePos();
+}
+
 void Player::updatePos()
 {
-	_position += _velocity;
+	getSprite()->getDestRect()->x += _velocity.x;
+	getSprite()->getDestRect()->y += _velocity.y;
 }
 
 Vector2 Player::position() const noexcept
@@ -36,7 +53,15 @@ Vector2 Player::velocity() const noexcept
 
 void Player::updateVel(const Vector2& acceleration)
 {
-	_velocity += acceleration;
+	if (acceleration.x < 0)
+	{
+		_velocity.x = std::max((_velocity.x + acceleration.x), -(MAX_HORIZONTAL_SPEED));
+	}
+	else if (acceleration.x > 0)
+	{
+		_velocity.x = std::min((_velocity.x + acceleration.x), MAX_HORIZONTAL_SPEED);
+	}
+	_velocity.y += acceleration.y;
 }
 
 bool Player::jumping() const noexcept
