@@ -47,7 +47,7 @@ void Input::processEvents()
 	}
 }
 
-bool Input::wasKeyPressed(SDL_Scancode key)
+bool Input::pressed(SDL_Scancode key)
 {
 	return _pressedKeys[key];
 }
@@ -57,7 +57,7 @@ bool Input::wasKeyReleased(SDL_Scancode key)
 	return false;
 }
 
-bool Input::isKeyHeld(SDL_Scancode key)
+bool Input::held(SDL_Scancode key)
 {
 	return _heldKeys[key];
 }

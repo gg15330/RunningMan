@@ -19,14 +19,15 @@ struct Vector2 {
 	{
 	}
 
-	Vector2 operator+(const Vector2& v)
+	void operator+(const Vector2& v)
 	{
-		return *this += v;
+		*this += v;
 	}
 
-	Vector2 operator+=(const Vector2& v)
+	void operator+=(const Vector2& v)
 	{
-		return { (x + v.x), (y + v.y) };
+		x += v.x; 
+		y += v.y;
 	}
 };
 
@@ -54,9 +55,9 @@ namespace globals
 	//Platform
 	const char* const PLATFORM_SPRITE_FILEPATH		= "resources/Platform.png";
 	const Vector2 PLATFORM_SOURCE_POS				{ 480.0f, 0.0f };
-	const Vector2 PLATFORM_STARTING_POS				{ 100.0f, 100.0f };
 	const int PLATFORM_SPRITE_WIDTH					= 95;
 	const int PLATFORM_SPRITE_HEIGHT				= 63;
+	const Vector2 PLATFORM_STARTING_POS				{ ((SCREEN_WIDTH / 2.0f) - (PLATFORM_SPRITE_WIDTH / 2.0f)), 100.0f };
 }
 
 /// <summary>

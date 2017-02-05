@@ -30,7 +30,8 @@ public:
 	/// <summary>
 	/// Change this <see cref="Player"/>'s coordinates
 	/// </summary>
-	void updatePos();
+	/// <param name="timeElapsed"></param>
+	void update(int timeElapsed);
 
 	/// <summary>
 	/// Get this <see cref="Player"/>'s position
@@ -38,7 +39,7 @@ public:
 	/// <returns></returns>
 	Vector2 position() const noexcept;
 	
-	/// /// <summary>
+	/// <summary>
 	/// Get this <see cref="Player"/>'s velocity
 	/// </summary>
 	/// <returns></returns>
@@ -47,7 +48,12 @@ public:
 	/// <summary>
 	/// Set this <see cref="Player"/>'s velocity
 	/// </summary>
-	void updateVel(const Vector2& acceleration);
+	void accelerate(const Vector2& acceleration);
+
+	/// <summary>
+	/// Stops this <see cref="Player"/> moving left or right
+	/// </summary>
+	void stop();
 
 	/// <summary>
 	/// Returns this <see cref="Player"/>'s _jumping property
@@ -60,6 +66,7 @@ public:
 	/// </summary>
 	/// <param name="jumping"></param>
 	void setJumping(bool jumping);
+
 private:
 	bool _jumping;
 	Vector2 _position, _velocity;

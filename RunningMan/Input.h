@@ -32,7 +32,7 @@ public:
 	/// </summary>
 	/// <param name="key">The SDL_Scancode of the key to check</param>
 	/// <returns>True if pressed, False if not</returns>
-	bool wasKeyPressed(SDL_Scancode key);
+	bool pressed(SDL_Scancode key);
 	
 	/// <summary>
 	/// Checks if a particular key was released
@@ -46,7 +46,7 @@ public:
 	/// </summary>
 	/// <param name="key">The SDL_Scancode of the key to check</param>
 	/// <returns>True if held, False if not</returns>
-	bool isKeyHeld(SDL_Scancode key);
+	bool held(SDL_Scancode key);
 
 private:
 	std::map<SDL_Scancode, bool> _heldKeys;

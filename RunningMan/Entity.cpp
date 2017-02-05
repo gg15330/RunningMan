@@ -21,7 +21,7 @@ Entity::~Entity()
 }
 
 
-Sprite * Entity::getSprite() noexcept
+Sprite * Entity::sprite() noexcept
 {
 	return &_sprite;
 }

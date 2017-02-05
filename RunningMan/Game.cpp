@@ -37,8 +37,8 @@ void Game::init()
 		globals::PLAYER_STARTING_POS.y } };
 	_platform.setSprite(platformSprite);
 	_player.setSprite(playerSprite);
-	_display.registerSprite(_platform.getSprite());
-	_display.registerSprite(_player.getSprite());
+	_display.registerSprite(_platform.sprite());
+	_display.registerSprite(_player.sprite());
 }
 
 void Game::gameLoop()
@@ -50,10 +50,22 @@ void Game::gameLoop()
 	{
 		_input.clearKeyArrays();
 		_input.processEvents();
-		if (_input.wasKeyPressed(SDL_SCANCODE_ESCAPE))
+		if (_input.pressed(SDL_SCANCODE_ESCAPE))
 		{
 			_display.quit();
 			return;
+		}	
+		if (_input.held(SDL_SCANCODE_LEFT))
+		{
+			_player.move(LEFT);
+		}
+		if (_input.held(SDL_SCANCODE_RIGHT))
+		{
+			_player.move(RIGHT);
+		}
+		if (!_input.held(SDL_SCANCODE_LEFT) && !_input.held(SDL_SCANCODE_RIGHT))
+		{
+			_player.stop();
 		}
 		currentTimeMS = SDL_GetTicks();
 		elapsedTime	= currentTimeMS - lastUpdateTime;
@@ -66,18 +78,11 @@ void Game::gameLoop()
 void Game::update(int timeElapsed)
 {
 	_timeElapsed += timeElapsed;
-	if (_timeElapsed < _timeToUpdate)			{ return; }
-
-	if (_input.isKeyHeld(SDL_SCANCODE_LEFT))	{ _player.updateVel({ -1.0f, 0.0f }); }
-	if (_input.isKeyHeld(SDL_SCANCODE_RIGHT))	{ _player.updateVel({ 1.0f, 0.0f }); }
-	if (_input.isKeyHeld(SDL_SCANCODE_UP))		{ _player.updateVel({ 0.0f, -1.0f }); }
-	if (_input.isKeyHeld(SDL_SCANCODE_DOWN))	{ _player.updateVel({ -1.0f, 1.0f }); }
-
-	//else if (_input.isKeyHeld(SDL_SCANCODE_LEFT))	{ _player.move(LEFT); }
-	//else if (_input.isKeyHeld(SDL_SCANCODE_RIGHT))	{ _player.move(RIGHT); }
-	//else if (_input.isKeyHeld(SDL_SCANCODE_UP))		{ _player.move(UP); }
-	//else if (_input.isKeyHeld(SDL_SCANCODE_DOWN))	{ _player.move(DOWN); }
-	_player.updatePos();
+	if (_timeElapsed < _timeToUpdate)			
+	{
+		return;
+	}
+	_player.update(timeElapsed);
 	_timeElapsed = 0;
 }
 

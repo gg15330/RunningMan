@@ -3,6 +3,8 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
+#include "Globals.h"
+
 #include <SDL.h>
 #include <SDL_image.h>
 
@@ -36,9 +38,8 @@ public:
 	/// <summary>
 	/// Updates the position of the spritesheet's destination rectangle
 	/// </summary>
-	/// <param name="x"></param>
-	/// <param name="y"></param>
-	void updateDestRect(int x, int y);
+	/// <param name="position"></param>
+	void updateDestRect(Vector2 position);
 
 	/// <summary>
 	/// Returns the sprite's current source SDL_Rect

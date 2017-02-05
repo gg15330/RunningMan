@@ -15,7 +15,7 @@ Sprite::Sprite(SDL_Renderer* renderer, const char* const filePath, const float s
 		width, 
 		height 
 	};
-	_destRect = SDL_Rect 
+	_destRect = SDL_Rect
 	{ 
 		roundToInt(posX), 
 		roundToInt(posY), 
@@ -52,10 +52,10 @@ void Sprite::updateSourceRect(int x, int y)
 	_sourceRect.y = y;
 }
 
-void Sprite::updateDestRect(int x, int y)
+void Sprite::updateDestRect(Vector2 position)
 {
-	_destRect.x = x;
-	_destRect.y = y;
+	_destRect.x += roundToInt(position.x);
+	_destRect.y += roundToInt(position.y);
 }
 
 SDL_Rect* Sprite::getSourceRect() noexcept

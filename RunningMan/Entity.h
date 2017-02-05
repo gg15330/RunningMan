@@ -23,7 +23,7 @@ public:
 	/// Returns this <see cref="Entity"/>'s <see cref="Sprite"/> object
 	/// </summary>
 	/// <returns></returns>
-	Sprite* getSprite() noexcept;
+	Sprite* sprite() noexcept;
 
 	/// <summary>
 	/// Returns this <see cref="Entity"/>'s destination <see cref="SDL_Rect"/> object
