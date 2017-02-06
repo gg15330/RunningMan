@@ -55,7 +55,7 @@ private:
 	/// <summary>
 	/// Draws a texture to a certain part of the screen
 	/// </summary>
-	void blitSurface(SDL_Texture* source, SDL_Rect* sourceRectangle, SDL_Rect* destinationRectangle);
+	void blitSurface(SDL_Texture* source, const SDL_Rect* sourceRectangle, const SDL_Rect* destinationRectangle);
 
 	/// <summary>
 	/// Renders everything to the screen

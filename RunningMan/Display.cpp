@@ -40,7 +40,7 @@ void Display::draw(int elapsedTime)
 	flip();
 }
 
-void Display::blitSurface(SDL_Texture* texture, SDL_Rect* sourceRectangle, SDL_Rect* destinationRectangle) 
+void Display::blitSurface(SDL_Texture* texture, const SDL_Rect* sourceRectangle, const SDL_Rect* destinationRectangle) 
 {
 	SDL_RenderCopy(_renderer, texture, sourceRectangle, destinationRectangle);
 }
