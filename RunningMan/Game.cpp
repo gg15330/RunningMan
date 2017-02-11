@@ -97,7 +97,7 @@ void Game::update(int timeElapsed)
 	{
 		return;
 	}
-	Direction collision = _level.collisionDetected(&_player);
+	Direction collision = _level.collisionSide(_player.sprite()->getDestRect());
 	if (collision != NONE)
 	{
 		std::cout << collision << std::endl;
