@@ -3,14 +3,15 @@
 #ifndef GAME_H
 #define GAME_H
 
+#define NOMINMAX
+
 #include "Display.h"
 #include "Input.h"
+#include "Level.h"
 #include "Player.h"
 #include "Terrain.h"
 
 #include <algorithm>
-
-#define NOMINMAX
 
 
 /// <summary>
@@ -31,9 +32,11 @@ public:
 	/// Main game loop
 	/// </summary>
 	void gameLoop();
+
 private:
 	Display _display;
 	Input _input;
+	Level _level;
 	Player _player;
 	Terrain _platform;
 

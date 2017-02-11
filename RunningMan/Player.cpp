@@ -28,8 +28,8 @@ void Player::move(Direction direction)
 	{
 	case LEFT:	_velocity.x = -WALK_SPEED; break;
 	case RIGHT:	_velocity.x = WALK_SPEED; break;
-	case UP:	break;
-	case DOWN:	break;
+	case UP:	_velocity.y = -WALK_SPEED; break;
+	case DOWN:	_velocity.y = WALK_SPEED; break;
 	default:	break;
 	}
 }
@@ -54,6 +54,7 @@ void Player::accelerate(const Vector2& acceleration)
 void Player::stop()
 {
 	_velocity.x = 0;
+	_velocity.y = 0;
 }
 
 bool Player::jumping() const noexcept

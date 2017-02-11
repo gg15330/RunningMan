@@ -46,7 +46,7 @@ public:
 	/// </summary>
 	/// <param name="other">The other <see cref="SDL_Rect"/></param>
 	/// <returns>True for a collision, false if not</returns>
-	bool collidesWith(const SDL_Rect& other) const;
+	bool collidesWith(const SDL_Rect* other) const;
 
 	/// <summary>
 	/// Returns the sprite's current source SDL_Rect

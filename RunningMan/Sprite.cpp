@@ -28,7 +28,7 @@ Sprite::Sprite(SDL_Renderer* renderer, const char* const filePath, const float s
 
 Sprite::~Sprite()
 {
-	std::cout << "Destroying sprite: " << this << std::endl;
+	std::cout << "Destroying Sprite: " << this << std::endl;
 }
 
 
@@ -58,9 +58,9 @@ void Sprite::updateDestRect(Vector2 position)
 	_destRect.y += roundToInt(position.y);
 }
 
-bool Sprite::collidesWith(const SDL_Rect& other) const
+bool Sprite::collidesWith(const SDL_Rect * other) const
 {
-	return SDL_HasIntersection(&_destRect, &other);
+	return SDL_HasIntersection(&_destRect, other);
 }
 
 SDL_Rect* Sprite::getSourceRect() noexcept
