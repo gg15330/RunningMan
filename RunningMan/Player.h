@@ -34,23 +34,6 @@ public:
 	void update(int timeElapsed);
 
 	/// <summary>
-	/// Get this <see cref="Player"/>'s position
-	/// </summary>
-	/// <returns></returns>
-	Vector2 position() const noexcept;
-	
-	/// <summary>
-	/// Get this <see cref="Player"/>'s velocity
-	/// </summary>
-	/// <returns></returns>
-	Vector2 velocity() const noexcept;
-
-	/// <summary>
-	/// Set this <see cref="Player"/>'s velocity
-	/// </summary>
-	void accelerate(const Vector2& acceleration);
-
-	/// <summary>
 	/// Stops this <see cref="Player"/> moving left or right
 	/// </summary>
 	void stop();
@@ -59,17 +42,16 @@ public:
 	/// Returns this <see cref="Player"/>'s _jumping property
 	/// </summary>
 	/// <returns></returns>
-	bool jumping() const noexcept;
+	bool grounded() const noexcept;
 
 	/// <summary>
 	/// Set whether the <see cref="Player"/> is jumping
 	/// </summary>
 	/// <param name="jumping"></param>
-	void setJumping(bool jumping);
+	void setGrounded(bool jumping);
 
 private:
-	bool _jumping;
-	Vector2 _position, _velocity;
+	bool _grounded;
 };
 
 #endif // !PLAYER_H

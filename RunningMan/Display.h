@@ -3,7 +3,7 @@
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
 
-#include "Sprite.h"
+#include "Entity.h"
 #include "Globals.h"
 
 #include <SDL.h>
@@ -22,9 +22,9 @@ public:
 	~Display();
 
 	/// <summary>
-	/// Adds a <see cref="Sprite"/> to the list
+	/// Adds an <see cref="Entity"/> to the list
 	/// </summary>
-	void registerSprite(Sprite* sprite);
+	void registerEntity(Entity* sprite);
 
 	/// <summary>
 	/// Initialises SDL components
@@ -50,7 +50,7 @@ public:
 private:
 	SDL_Window* _window;
 	SDL_Renderer* _renderer;
-	std::vector<Sprite*> _sprites;
+	std::vector<Entity*> _entities;
 
 	/// <summary>
 	/// Draws a texture to a certain part of the screen

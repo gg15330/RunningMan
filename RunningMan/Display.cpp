@@ -10,9 +10,9 @@ Display::~Display()
 }
 
 
-void Display::registerSprite(Sprite* sprite)
+void Display::registerEntity(Entity* sprite)
 {
-	_sprites.push_back(sprite);
+	_entities.push_back(sprite);
 }
 
 void Display::init()
@@ -32,10 +32,14 @@ void Display::quit()
 
 void Display::draw(int elapsedTime)
 {
+	SDL_Rect r;
 	clear();
-	for each (Sprite* sprite in _sprites)
+	for each (Entity* entity in _entities)
 	{
-		blitSurface(sprite->getTexture(), sprite->getSourceRect(), sprite->getDestRect());
+		r = *entity->sprite()->getDestRect();
+		r.x = entity->position().x;
+		r.y = entity->position().y;
+		blitSurface(entity->sprite()->getTexture(), entity->sprite()->getSourceRect(), &r);
 	}
 	flip();
 }

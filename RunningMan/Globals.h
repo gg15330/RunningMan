@@ -42,8 +42,8 @@ namespace globals
 	const int PIXEL_SCALE							= 2;
 
 	//Physics
-	const Vector2 GRAVITY							{ 0.0f, 1.0f };
-	const float GRAVITY_CAP							= 10.0f;
+	const float GRAVITY								= 0.01f;
+	const float GRAVITY_CAP							= 0.1f;
 
 	//Player
 	const char* const PLAYER_SPRITE_FILEPATH		= "resources/MyChar.png";

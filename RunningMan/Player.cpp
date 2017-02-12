@@ -1,7 +1,7 @@
 #include "Player.h"
 
 
-constexpr float WALK_SPEED = 2.0f;
+constexpr float WALK_SPEED = 0.1f;
 
 
 Player::Player()
@@ -11,8 +11,7 @@ Player::Player()
 
 Player::Player(Sprite const & sprite, bool passable = false) :
 	Entity		{ sprite, passable },
-	_jumping	{ false },
-	_velocity	{ Vector2 {0, 0} }
+	_grounded	{ false }
 {
 }
 
@@ -26,53 +25,32 @@ void Player::move(Direction direction)
 {
 	switch (direction)
 	{
-	case LEFT:	_velocity.x = -WALK_SPEED; break;
-	case RIGHT:	_velocity.x = WALK_SPEED; break;
-	case UP:	_velocity.y = -WALK_SPEED; break;
-	case DOWN:	_velocity.y = WALK_SPEED; break;
+	case LEFT:	_dx = -WALK_SPEED; break;
+	case RIGHT:	_dx = WALK_SPEED; break;
 	default:	break;
 	}
 }
 
 void Player::update(int timeElapsed)
 {
-	sprite()->updateDestRect(_velocity);
-}
-
-void Player::accelerate(const Vector2& acceleration)
-{
-	if (acceleration.x < 0)
-	{
-		_velocity.x = std::max((_velocity.x + acceleration.x), -(WALK_SPEED));
+	if (!_grounded && _dy <= globals::GRAVITY_CAP) {
+		_dy += globals::GRAVITY * timeElapsed;
 	}
-	else if (acceleration.x > 0)
-	{
-		_velocity.x = std::min((_velocity.x + acceleration.x), WALK_SPEED);
-	}
+	_x += _dx * timeElapsed;
+	_y += _dy * timeElapsed;
 }
 
 void Player::stop()
 {
-	_velocity.x = 0;
-	_velocity.y = 0;
+	_dx = 0.0f;
 }
 
-bool Player::jumping() const noexcept
+bool Player::grounded() const noexcept
 {
-	return _jumping;
+	return _grounded;
 }
 
-Vector2 Player::position() const noexcept
+void Player::setGrounded(bool grounded)
 {
-	return _position;
-}
-
-Vector2 Player::velocity() const noexcept
-{
-	return _velocity;
-}
-
-void Player::setJumping(bool jumping)
-{
-	_jumping = jumping;
+	_grounded = grounded;
 }

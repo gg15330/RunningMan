@@ -26,28 +26,21 @@ public:
 	Sprite* sprite() noexcept;
 
 	/// <summary>
-	/// Getter for this <see cref="Entity"/>'s velocity
-	/// </summary>
-	/// <param name="velocity"></param>
-	/// <returns></returns>
-	Vector2 getVelocity() const noexcept;
-
-	/// <summary>
-	/// Setter for this <see cref="Entity"/>'s velocity
-	/// </summary>
-	/// <param name="velocity"></param>
-	void setVelocity(Vector2 velocity);
-	
-	/// <summary>
 	/// Setter for this <see cref="Entity"/>'s Sprite
 	/// </summary>
 	/// <param name="sprite"></param>
 	void setSprite(Sprite const & sprite);
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
+	Vector2 position();
+
 protected:
 	Sprite _sprite;
 	bool _passable;
-	Vector2 _velocity;
+	float _x, _y, _dx, _dy;
 };
 
 #endif // !ENTITY_H

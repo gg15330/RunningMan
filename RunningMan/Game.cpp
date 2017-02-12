@@ -1,7 +1,6 @@
 #include "Game.h"
 
 
-int _timeElapsed				{ 0 };
 constexpr int _timeToUpdate		{ 10 };
 constexpr int FPS				{ 50 };
 constexpr int MAX_FRAME_TIME	{ 1000 / FPS };
@@ -40,15 +39,13 @@ void Game::init()
 	_level.addTerrain(&_platform);
 	_platform.setSprite(platformSprite);
 	_player.setSprite(playerSprite);
-	_display.registerSprite(_platform.sprite());
-	_display.registerSprite(_player.sprite());
+	_display.registerEntity(&_platform);
+	_display.registerEntity(&_player);
 }
 
 void Game::gameLoop()
 {
-	int lastUpdateTime = SDL_GetTicks();
-	int currentTimeMS = 0;
-	int elapsedTime	= 0;
+	int LAST_UPDATE_TIME = SDL_GetTicks();
 	while (true)
 	{
 		_input.clearKeyArrays();
@@ -72,37 +69,35 @@ void Game::gameLoop()
 		}
 		else if (_input.held(SDL_SCANCODE_UP))
 		{
-			_player.move(UP);
+
 		}
 		else if (_input.held(SDL_SCANCODE_DOWN))
 		{
-			_player.move(DOWN);
+
 		}
-		if (!_input.held(SDL_SCANCODE_LEFT) && !_input.held(SDL_SCANCODE_RIGHT) && !_input.held(SDL_SCANCODE_UP) && !_input.held(SDL_SCANCODE_DOWN))
+		if (!_input.held(SDL_SCANCODE_LEFT) && !_input.held(SDL_SCANCODE_RIGHT))
 		{
 			_player.stop();
 		}
-		currentTimeMS = SDL_GetTicks();
-		elapsedTime	= currentTimeMS - lastUpdateTime;
-		update(std::min(elapsedTime, MAX_FRAME_TIME));
-		lastUpdateTime = currentTimeMS;
+		const int CURRENT_TIME_MS = SDL_GetTicks();
+		int ELAPSED_TIME_MS = CURRENT_TIME_MS - LAST_UPDATE_TIME;
+		update(std::min(ELAPSED_TIME_MS, MAX_FRAME_TIME));
+		LAST_UPDATE_TIME = CURRENT_TIME_MS;
 		_display.draw(MAX_FRAME_TIME);
 	}
 }
 
 void Game::update(int timeElapsed)
 {
-	_timeElapsed += timeElapsed;
-	if (_timeElapsed < _timeToUpdate)			
+	if (timeElapsed > MAX_FRAME_TIME)
 	{
 		return;
 	}
-	Direction collision = _level.collisionSide(_player.sprite()->getDestRect());
-	if (collision != NONE)
-	{
-		std::cout << collision << std::endl;
-	}
+	//Direction collision = _level.collisionSide(_player.sprite()->getDestRect());
+	//if (collision != NONE)
+	//{
+	//	std::cout << collision << std::endl;
+	//}
 	_player.update(timeElapsed);
-	_timeElapsed = 0;
 }
 
