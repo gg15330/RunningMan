@@ -58,11 +58,6 @@ void Sprite::updateDestRect(Vector2 position)
 	_destRect.y += roundToInt(position.y);
 }
 
-bool Sprite::collidesWith(const SDL_Rect * other) const
-{
-	return SDL_HasIntersection(&_destRect, other);
-}
-
 SDL_Rect* Sprite::getSourceRect() noexcept
 {
 	return &_sourceRect;

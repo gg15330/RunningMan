@@ -42,13 +42,6 @@ public:
 	void updateDestRect(Vector2 position);
 
 	/// <summary>
-	/// Checks whether this <see cref="Sprite"/>'s <see cref="SDL_Rect"/> collides with the supplied one
-	/// </summary>
-	/// <param name="other">The other <see cref="SDL_Rect"/></param>
-	/// <returns>True for a collision, false if not</returns>
-	bool collidesWith(const SDL_Rect* other) const;
-
-	/// <summary>
 	/// Returns the sprite's current source SDL_Rect
 	/// </summary>
 	/// <returns>A pointer to the sprite's current source SDL_Rect</returns>
