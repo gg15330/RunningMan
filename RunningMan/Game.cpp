@@ -39,6 +39,7 @@ void Game::init()
 	_level.addTerrain(&_platform);
 	_platform.setSprite(platformSprite);
 	_player.setSprite(playerSprite);
+	_platform.setPosition(50.0f, 150.0f);
 	_display.registerEntity(&_platform);
 	_display.registerEntity(&_player);
 }

@@ -37,6 +37,8 @@ public:
 	/// <returns></returns>
 	Vector2 position();
 
+	void setPosition(float x, float y);
+
 protected:
 	Sprite _sprite;
 	bool _passable;

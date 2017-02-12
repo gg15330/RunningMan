@@ -36,3 +36,9 @@ Vector2 Entity::position()
 {
 	return Vector2{ _x, _y };
 }
+
+void Entity::setPosition(float x, float y)
+{
+	_x = x;
+	_y = y;
+}
