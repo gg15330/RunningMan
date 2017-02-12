@@ -51,7 +51,7 @@ public:
 	/// Returns the sprite's current destination SDL_Rect
 	/// </summary>
 	/// <returns>A pointer to the sprite's current destination SDL_Rect</returns>
-	SDL_Rect* getDestRect() noexcept;
+	const SDL_Rect* getDestRect() const noexcept;
 
 	/// <summary>
 	/// Get the spritesheet

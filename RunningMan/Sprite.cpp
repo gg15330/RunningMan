@@ -28,7 +28,7 @@ Sprite::Sprite(SDL_Renderer* renderer, const char* const filePath, const float s
 
 Sprite::~Sprite()
 {
-	std::cout << "Destroying sprite: " << this << std::endl;
+	std::cout << "Destroying Sprite: " << this << std::endl;
 }
 
 
@@ -63,7 +63,7 @@ SDL_Rect* Sprite::getSourceRect() noexcept
 	return &_sourceRect;
 }
 
-SDL_Rect * Sprite::getDestRect() noexcept
+const SDL_Rect * Sprite::getDestRect() const noexcept
 {
 	return &_destRect;
 }

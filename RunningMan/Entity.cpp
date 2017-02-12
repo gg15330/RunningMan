@@ -26,12 +26,6 @@ Sprite * Entity::sprite() noexcept
 	return &_sprite;
 }
 
-
-SDL_Rect* Entity::getDestRect() noexcept
-{
-	return _sprite.getDestRect();
-}
-
 Vector2 Entity::getVelocity() const noexcept
 {
 	return _velocity;

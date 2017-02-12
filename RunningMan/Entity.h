@@ -26,12 +26,6 @@ public:
 	Sprite* sprite() noexcept;
 
 	/// <summary>
-	/// Returns this <see cref="Entity"/>'s destination <see cref="SDL_Rect"/> object
-	/// </summary>
-	/// <returns></returns>
-	SDL_Rect* getDestRect() noexcept;
-
-	/// <summary>
 	/// Getter for this <see cref="Entity"/>'s velocity
 	/// </summary>
 	/// <param name="velocity"></param>

@@ -19,22 +19,25 @@ Game::~Game()
 void Game::init()
 {
 	_display.init();
-	Sprite platformSprite{ Sprite{ _display.getRenderer(),
+	Sprite platformSprite{  _display.getRenderer(),
 		globals::PLATFORM_SPRITE_FILEPATH,
 		globals::PLATFORM_SOURCE_POS.x,
 		globals::PLATFORM_SOURCE_POS.y,
 		globals::PLATFORM_SPRITE_WIDTH,
 		globals::PLATFORM_SPRITE_HEIGHT,
 		globals::PLATFORM_STARTING_POS.x,
-		globals::PLATFORM_STARTING_POS.y } };
-	Sprite playerSprite{ Sprite{ _display.getRenderer(),
+		globals::PLATFORM_STARTING_POS.y };
+	Sprite playerSprite{ _display.getRenderer(),
 		globals::PLAYER_SPRITE_FILEPATH,
 		globals::PLAYER_SOURCE_POS.x,
 		globals::PLAYER_SOURCE_POS.y,
 		globals::PLAYER_SPRITE_WIDTH,
 		globals::PLAYER_SPRITE_HEIGHT,
 		globals::PLAYER_STARTING_POS.x,
-		globals::PLAYER_STARTING_POS.y } };
+		globals::PLAYER_STARTING_POS.y };
+	_level = Level(_player);
+	_platform = Terrain{ platformSprite };
+	_level.addTerrain(&_platform);
 	_platform.setSprite(platformSprite);
 	_player.setSprite(playerSprite);
 	_display.registerSprite(_platform.sprite());
@@ -50,20 +53,32 @@ void Game::gameLoop()
 	{
 		_input.clearKeyArrays();
 		_input.processEvents();
+		
+		//check for exit command
 		if (_input.pressed(SDL_SCANCODE_ESCAPE))
 		{
 			_display.quit();
 			return;
 		}	
-		if (_input.held(SDL_SCANCODE_LEFT))
+
+		//move player
+		else if (_input.held(SDL_SCANCODE_LEFT))
 		{
 			_player.move(LEFT);
 		}
-		if (_input.held(SDL_SCANCODE_RIGHT))
+		else if (_input.held(SDL_SCANCODE_RIGHT))
 		{
 			_player.move(RIGHT);
 		}
-		if (!_input.held(SDL_SCANCODE_LEFT) && !_input.held(SDL_SCANCODE_RIGHT))
+		else if (_input.held(SDL_SCANCODE_UP))
+		{
+			_player.move(UP);
+		}
+		else if (_input.held(SDL_SCANCODE_DOWN))
+		{
+			_player.move(DOWN);
+		}
+		if (!_input.held(SDL_SCANCODE_LEFT) && !_input.held(SDL_SCANCODE_RIGHT) && !_input.held(SDL_SCANCODE_UP) && !_input.held(SDL_SCANCODE_DOWN))
 		{
 			_player.stop();
 		}
@@ -81,6 +96,11 @@ void Game::update(int timeElapsed)
 	if (_timeElapsed < _timeToUpdate)			
 	{
 		return;
+	}
+	Direction collision = _level.collisionSide(_player.sprite()->getDestRect());
+	if (collision != NONE)
+	{
+		std::cout << collision << std::endl;
 	}
 	_player.update(timeElapsed);
 	_timeElapsed = 0;
