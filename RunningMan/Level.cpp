@@ -5,7 +5,7 @@ Level::Level()
 {
 }
 
-Level::Level(const Player & player)
+Level::Level(const Player * player)
 {
 	_player = player;
 }
@@ -19,14 +19,14 @@ void Level::update()
 {
 }
 
-void Level::addTerrain(Terrain * terrain)
+void Level::addTerrain(Entity * terrain)
 {
 	_terrains.push_back(terrain);
 }
 
 std::vector<Entity*> Level::entityCollisions(const Player* player) {
 	std::vector<Entity*> others;
-	for each (Terrain* terrain in _terrains) 
+	for each (Entity* terrain in _terrains) 
 	{
 		if (collisionDetected(player, terrain)) 
 		{
@@ -37,7 +37,7 @@ std::vector<Entity*> Level::entityCollisions(const Player* player) {
 	return others;
 }
 
-std::vector<Terrain*> Level::terrains() const noexcept
+std::vector<Entity*> Level::terrains() const noexcept
 {
 	return _terrains;
 }

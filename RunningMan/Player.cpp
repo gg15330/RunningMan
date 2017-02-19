@@ -9,9 +9,8 @@ Player::Player()
 }
 
 
-Player::Player(Sprite const & sprite, bool passable = false) :
-	Entity		{ sprite, passable },
-	_grounded	{ false }
+Player::Player(SDL_Renderer* renderer, const char* const filePath, const float sourceX, const float sourceY, const int width, const int height, const float posX, const float posY) :
+	Entity(renderer, filePath, sourceX, sourceY, width, height, posX, posY)
 {
 }
 
@@ -76,7 +75,7 @@ void Player::handleTileCollisions(std::vector<Entity*> others)
 		}
 		break;
 	case DOWN:
-		_y = other->y() - sprite()->getDestRect()->h - 1;
+		_y = other->y() - getDestRect()->h - 1;
 		_dy = 0;
 		_grounded = true;
 		break;
@@ -84,7 +83,7 @@ void Player::handleTileCollisions(std::vector<Entity*> others)
 		_x = (other->x() + other->w())+ 1;
 		break;
 	case RIGHT:
-		_x = other->x() - sprite()->getDestRect()->w - 1;
+		_x = other->x() - getDestRect()->w - 1;
 		break;
 	}
 }
@@ -92,8 +91,8 @@ void Player::handleTileCollisions(std::vector<Entity*> others)
 Direction Player::collisionSide(Entity* entity) const
 {
 	float wy, hx;
-	const SDL_Rect* playerRect = _sprite.getDestRect();
-	if (SDL_HasIntersection(playerRect, entity->sprite()->getDestRect()))
+	const SDL_Rect* playerRect = getDestRect();
+	if (SDL_HasIntersection(playerRect, entity->getDestRect()))
 	{
 		wy = (0.5f * (playerRect->w + entity->w())) * ((playerRect->y + (0.5f * playerRect->h)) - (entity->y() + (0.5f * entity->h())));
 		hx = (0.5f * (playerRect->h + entity->h())) * ((playerRect->x + (0.5f * playerRect->w)) - (entity->x() + (0.5f * entity->w())));

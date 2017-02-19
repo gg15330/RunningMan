@@ -36,10 +36,10 @@ void Display::draw(int elapsedTime)
 	clear();
 	for each (Entity* entity in _entities)
 	{
-		r = *entity->sprite()->getDestRect();
+		r = *entity->getDestRect();
 		r.x = entity->x();
 		r.y = entity->y();
-		blitSurface(entity->sprite()->getTexture(), entity->sprite()->getSourceRect(), &r);
+		blitSurface(entity->getTexture(), entity->getSourceRect(), &r);
 	}
 	flip();
 }

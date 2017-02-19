@@ -5,7 +5,6 @@
 
 #include "Globals.h"
 #include "Entity.h"
-#include "Terrain.h"
 
 #include <algorithm>
 #include <vector>
@@ -20,7 +19,14 @@ class Player : public Entity
 {
 public:
 	Player();
-	Player(Sprite const & sprite, bool passable);
+	Player(SDL_Renderer* renderer, 
+		const char* const filePath, 
+		const float sourceX, 
+		const float sourceY, 
+		const int width, 
+		const int height, 
+		const float posX, 
+		const float posY);
 	~Player();
 
 	/// <summary>

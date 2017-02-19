@@ -9,7 +9,6 @@
 #include "Input.h"
 #include "Level.h"
 #include "Player.h"
-#include "Terrain.h"
 
 #include <algorithm>
 
@@ -38,7 +37,7 @@ private:
 	Input _input;
 	Level _level;
 	Player _player;
-	Terrain _platform;
+	Entity _platform;
 
 	/// <summary>
 	/// Updates all game objects

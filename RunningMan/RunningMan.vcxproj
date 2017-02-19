@@ -126,7 +126,6 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Sprite.cpp" />
-    <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -141,7 +140,6 @@
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Sprite.h" />
-    <ClInclude Include="Terrain.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>

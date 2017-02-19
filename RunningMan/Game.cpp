@@ -18,7 +18,7 @@ Game::~Game()
 void Game::init()
 {
 	_display.init();
-	Sprite platformSprite{  _display.getRenderer(),
+	_platform = Entity{ _display.getRenderer(),
 		globals::PLATFORM_SPRITE_FILEPATH,
 		globals::PLATFORM_SOURCE_POS.x,
 		globals::PLATFORM_SOURCE_POS.y,
@@ -26,7 +26,7 @@ void Game::init()
 		globals::PLATFORM_SPRITE_HEIGHT,
 		globals::PLATFORM_STARTING_POS.x,
 		globals::PLATFORM_STARTING_POS.y };
-	Sprite playerSprite{ _display.getRenderer(),
+	_player = Player{ _display.getRenderer(),
 		globals::PLAYER_SPRITE_FILEPATH,
 		globals::PLAYER_SOURCE_POS.x,
 		globals::PLAYER_SOURCE_POS.y,
@@ -34,11 +34,8 @@ void Game::init()
 		globals::PLAYER_SPRITE_HEIGHT,
 		globals::PLAYER_STARTING_POS.x,
 		globals::PLAYER_STARTING_POS.y };
-	_level = Level(_player);
-	_platform = Terrain{ platformSprite };
+	_level = Level(&_player);
 	_level.addTerrain(&_platform);
-	_platform.setSprite(platformSprite);
-	_player.setSprite(playerSprite);
 	_player.setX(50.0f);
 	_player.setY(150.0f);
 	_platform.setX(50.0f);

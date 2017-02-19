@@ -3,7 +3,6 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
-#include "Terrain.h"
 #include "Player.h"
 
 #include <vector>
@@ -12,7 +11,7 @@ class Level
 {
 public:
 	Level();
-	Level(const Player& player);
+	Level(const Player* player);
 	~Level();
 
 	/// <summary>
@@ -24,7 +23,7 @@ public:
 	/// Add a <see cref="Terrain"/> to the vector of Terrains
 	/// </summary>
 	/// <param name="terrain"></param>
-	void addTerrain(Terrain* terrain);
+	void addTerrain(Entity* terrain);
 
 	/// <summary>
 	/// 
@@ -33,10 +32,10 @@ public:
 	/// <returns></returns>
 	std::vector<Entity*> entityCollisions(const Player* player);
 
-	std::vector<Terrain*> terrains() const noexcept;
+	std::vector<Entity*> terrains() const noexcept;
 private:
-	Player _player;
-	std::vector<Terrain*> _terrains;
+	const Player* _player;
+	std::vector<Entity*> _terrains;
 
 	/// <summary>
 	/// 
