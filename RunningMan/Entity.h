@@ -35,14 +35,42 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	Vector2 position();
+	float x() const noexcept;
 
-	void setPosition(float x, float y);
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
+	float y() const noexcept;
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
+	float w() const noexcept;
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
+	float h() const noexcept;
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="x"></param>
+	void setX(float x);
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="y"></param>
+	void setY(float y);
 
 protected:
 	Sprite _sprite;
 	bool _passable;
-	float _x, _y, _dx, _dy;
+	float _x, _y, _w, _h, _dx, _dy;
 };
 
 #endif // !ENTITY_H

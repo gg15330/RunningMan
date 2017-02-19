@@ -27,13 +27,24 @@ public:
 	void addTerrain(Terrain* terrain);
 
 	/// <summary>
-	/// Checks if the supplied <see cref="SDL_Rect*"/> collides with any <see cref="Terrain"/> and returns the <see cref="Direction"/> of the collision
+	/// 
 	/// </summary>
-	/// <returns>The <see cref="Direction"/> of the collision, or NONE if no collision is found</returns>
-	Direction collisionSide(const SDL_Rect* playerRect) const;
+	/// <param name="other"></param>
+	/// <returns></returns>
+	std::vector<Entity*> entityCollisions(const Player* player);
+
+	std::vector<Terrain*> terrains() const noexcept;
 private:
 	Player _player;
 	std::vector<Terrain*> _terrains;
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="entity1"></param>
+	/// <param name="entity2"></param>
+	/// <returns></returns>
+	bool collisionDetected(const Entity* entity1, const Entity* entity2);
 };
 
 #endif // !LEVEL_H

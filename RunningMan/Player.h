@@ -5,8 +5,10 @@
 
 #include "Globals.h"
 #include "Entity.h"
+#include "Terrain.h"
 
 #include <algorithm>
+#include <vector>
 
 #define NOMINMAX
 
@@ -42,16 +44,28 @@ public:
 	/// Returns this <see cref="Player"/>'s _jumping property
 	/// </summary>
 	/// <returns></returns>
-	bool grounded() const noexcept;
+	bool grounded() noexcept;
 
 	/// <summary>
 	/// Set whether the <see cref="Player"/> is jumping
 	/// </summary>
-	/// <param name="jumping"></param>
-	void setGrounded(bool jumping);
+	/// <param name="grounded"></param>
+	void setGrounded(bool grounded);
+
+	/// <summary>
+	/// 
+	/// </summary>
+	void handleTileCollisions(std::vector<Entity*> others);
 
 private:
+	float _prevX, _prevY;
 	bool _grounded;
+
+	/// <summary>
+	/// Checks if the supplied <see cref="SDL_Rect*"/> collides with any <see cref="Terrain"/> and returns the <see cref="Direction"/> of the collision
+	/// </summary>
+	/// <returns>The <see cref="Direction"/> of the collision, or NONE if no collision is found</returns>
+	Direction collisionSide(Entity* rect) const;
 };
 
 #endif // !PLAYER_H

@@ -39,7 +39,10 @@ void Game::init()
 	_level.addTerrain(&_platform);
 	_platform.setSprite(platformSprite);
 	_player.setSprite(playerSprite);
-	_platform.setPosition(50.0f, 150.0f);
+	_player.setX(50.0f);
+	_player.setY(150.0f);
+	_platform.setX(50.0f);
+	_platform.setY(400.0f);
 	_display.registerEntity(&_platform);
 	_display.registerEntity(&_player);
 }
@@ -76,7 +79,7 @@ void Game::gameLoop()
 		{
 
 		}
-		if (!_input.held(SDL_SCANCODE_LEFT) && !_input.held(SDL_SCANCODE_RIGHT))
+		else if (!_input.held(SDL_SCANCODE_LEFT) && !_input.held(SDL_SCANCODE_RIGHT))
 		{
 			_player.stop();
 		}
@@ -94,11 +97,7 @@ void Game::update(int timeElapsed)
 	{
 		return;
 	}
-	//Direction collision = _level.collisionSide(_player.sprite()->getDestRect());
-	//if (collision != NONE)
-	//{
-	//	std::cout << collision << std::endl;
-	//}
+	_player.handleTileCollisions(_level.entityCollisions(&_player));
 	_player.update(timeElapsed);
 }
 

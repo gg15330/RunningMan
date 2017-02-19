@@ -32,13 +32,32 @@ void Entity::setSprite(Sprite const & sprite)
 	_sprite = sprite;
 }
 
-Vector2 Entity::position()
+float Entity::x() const noexcept
 {
-	return Vector2{ _x, _y };
+	return _x;
 }
 
-void Entity::setPosition(float x, float y)
+float Entity::y() const noexcept
+{
+	return _y;
+}
+
+float Entity::w() const noexcept
+{
+	return _w;
+}
+
+float Entity::h() const noexcept
+{
+	return _h;
+}
+
+void Entity::setX(float x)
 {
 	_x = x;
+}
+
+void Entity::setY(float y)
+{
 	_y = y;
 }
