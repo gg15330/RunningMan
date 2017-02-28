@@ -20,8 +20,8 @@ public:
 		const char* const filePath,
 		const float sourceX,
 		const float sourceY,
-		const int width,
-		const int height,
+		const float width,
+		const float height,
 		const float posX,
 		const float posY);
 	~Entity();
@@ -38,6 +38,14 @@ public:
 	/// </summary>
 	/// <param name="position"></param>
 	void updateDestRect(Vector2 position);
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="entity1"></param>
+	/// <param name="entity2"></param>
+	/// <returns></returns>
+	bool collisionDetected(Entity* entity);
 
 	/// <summary>
 	/// Returns the sprite's current source SDL_Rect
@@ -108,7 +116,7 @@ public:
 protected:
 	Sprite _sprite;
 	bool _passable;
-	float _x, _y, _w, _h, _dx, _dy;
+	float _x, _y, _w, _h, _dx, _dy, _ax, _ay;
 	SDL_Texture* _texture;
 	SDL_Rect _sourceRect;
 	SDL_Rect _destRect;

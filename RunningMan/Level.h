@@ -30,20 +30,17 @@ public:
 	/// </summary>
 	/// <param name="other"></param>
 	/// <returns></returns>
-	std::vector<Entity*> entityCollisions(const Player* player);
-
-	std::vector<Entity*> terrains() const noexcept;
-private:
-	const Player* _player;
-	std::vector<Entity*> _terrains;
+	std::vector<Entity*> entityCollisions(Player* player);
 
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="entity1"></param>
-	/// <param name="entity2"></param>
 	/// <returns></returns>
-	bool collisionDetected(const Entity* entity1, const Entity* entity2);
+	std::vector<Entity*> terrains() const noexcept;
+
+private:
+	const Player* _player;
+	std::vector<Entity*> _terrains;
 };
 
 #endif // !LEVEL_H

@@ -5,24 +5,30 @@ Entity::Entity()
 {
 }
 
-Entity::Entity(SDL_Renderer* renderer, const char* const filePath, const float sourceX, const float sourceY, const int width, const int height, const float posX, const float posY) :
+Entity::Entity(SDL_Renderer* renderer, const char* const filePath, const float sourceX, const float sourceY, const float width, const float height, const float posX, const float posY) :
+	_x{posX},
+	_y{posY},
+	_w{width},
+	_h{height},
 	_dx{ 0.0f },
-	_dy{ 0.0f }
+	_dy{ 0.0f },
+	_ax{ 0.0f },
+	_ay{ 0.0f }
 {
 	std::cout << "Creating Entity: " << this << std::endl;
 	_sourceRect = SDL_Rect 
 	{ 
 		roundToInt(sourceX), 
 		roundToInt(sourceY), 
-		width, 
-		height 
+		roundToInt(width),
+		roundToInt(height)
 	};
 	_destRect = SDL_Rect
 	{ 
 		roundToInt(posX), 
 		roundToInt(posY), 
-		width, 
-		height 
+		roundToInt(width),
+		roundToInt(height)
 	};
 	loadTexture(filePath, renderer);
 }
@@ -57,6 +63,15 @@ void Entity::updateDestRect(Vector2 position)
 {
 	_destRect.x += roundToInt(position.x);
 	_destRect.y += roundToInt(position.y);
+}
+
+bool Entity::collisionDetected(Entity * entity)
+{
+	return !(_x > (entity->x() + entity->w())
+		|| (_x + _w)< entity->x()
+		|| _y > (entity->y() + entity->h())
+		|| (_y + _h) < entity->y()
+		);
 }
 
 SDL_Rect* Entity::getSourceRect() noexcept

@@ -23,8 +23,8 @@ public:
 		const char* const filePath, 
 		const float sourceX, 
 		const float sourceY, 
-		const int width, 
-		const int height, 
+		const float width,
+		const float height,
 		const float posX, 
 		const float posY);
 	~Player();
@@ -64,14 +64,13 @@ public:
 	void handleTileCollisions(std::vector<Entity*> others);
 
 private:
-	float _prevX, _prevY;
 	bool _grounded;
 
 	/// <summary>
 	/// Checks if the supplied <see cref="SDL_Rect*"/> collides with any <see cref="Terrain"/> and returns the <see cref="Direction"/> of the collision
 	/// </summary>
 	/// <returns>The <see cref="Direction"/> of the collision, or NONE if no collision is found</returns>
-	Direction collisionSide(Entity* rect) const;
+	Direction collisionSide(Entity* rect);
 };
 
 #endif // !PLAYER_H
