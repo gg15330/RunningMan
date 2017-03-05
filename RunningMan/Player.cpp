@@ -30,34 +30,32 @@ void Player::move(Direction direction)
 
 void Player::update(int timeElapsed)
 {
-	//if (_grounded)
-	//{
-	//	_dy = 0.0f;
-	//}
-	//else if (_dy <= globals::GRAVITY_CAP) 
-	//{
-	//	_dy += globals::GRAVITY * timeElapsed;
-	//}
-	//_prevX = _x;
-	//_prevY = _y;
-	std::cout << "X: " << _x << std::endl;
+	//horizontal movement
 	_x += (_dx * timeElapsed);
 	_dx += (_ax * timeElapsed);
 	if (_ax < 0.0f)
 	{
-		_dx = std::max(_dx, -globals::MAX_SPEED);
+		_dx = std::max(_dx, -globals::MAX_HORIZONTAL_SPEED);
 	}
 	else if (_ax > 0.0f)
 	{
-		_dx = std::min(_dx, globals::MAX_SPEED);
+		_dx = std::min(_dx, globals::MAX_HORIZONTAL_SPEED);
 	}
 	else
 	{
 		_dx *= globals::SLOWDOWN_FACTOR;
 	}
-	//std::cout << "DX:	" << _dx << "		AX: " << _ax << std::endl;
 
-	//_y += _dy * timeElapsed;
+	//vertical movement
+	_y += _dy * timeElapsed;
+	_dy = std::min(_dy + (globals::GRAVITY * timeElapsed), globals::MAX_VERTICAL_SPEED);
+	
+	if (_y >= 320.0f)
+	{
+		_y = 320.0f;
+		_dy = 0.0f;
+	}
+	_grounded = (_y >= 320);
 }
 
 void Player::stop()
@@ -106,6 +104,23 @@ void Player::handleTileCollisions(std::vector<Entity*> others)
 		break;
 	}
 	_grounded = temp;
+}
+
+void Player::startJump()
+{
+	if (_grounded)
+	{
+		_dy = -globals::JUMP_SPEED;
+		_grounded = false;
+	}
+}
+
+void Player::stopJump()
+{
+	if (_dy < -(0.25f))
+	{
+		_dy = -(0.25f);
+	}
 }
 
 Direction Player::collisionSide(Entity* entity)

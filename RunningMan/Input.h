@@ -39,7 +39,7 @@ public:
 	/// </summary>
 	/// <param name="key">The SDL_Scancode of the key to check</param>
 	/// <returns>True if released, False if not</returns>
-	bool wasKeyReleased(SDL_Scancode key);
+	bool released(SDL_Scancode key);
 
 	/// <summary>
 	/// Checks if a particular key is currently being held

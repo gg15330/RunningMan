@@ -41,24 +41,27 @@ namespace globals
 	const int SCREEN_HEIGHT							= 480;
 	const int PIXEL_SCALE							= 2;
 
-	//Physics
-	const float GRAVITY								= 0.01f;
-	const float GRAVITY_CAP							= 0.1f;
-	const float WALKING_ACCELERATION				= 0.0018f;
-	const float MAX_SPEED							= 0.4f;
-	const float SLOWDOWN_FACTOR						= 0.98f;
+	//Horizontal movement
+	const float MAX_HORIZONTAL_SPEED				= 0.3f;
+	const float WALKING_ACCELERATION				= 0.0002f;
+	const float SLOWDOWN_FACTOR						= 0.999f;
+
+	//Vertical movement
+	const float MAX_VERTICAL_SPEED					= 0.325f;
+	const float GRAVITY								= 0.001f;
+	const float JUMP_SPEED							= 0.5f;
 
 	//Player
 	const char* const PLAYER_SPRITE_FILEPATH		= "resources/MyChar.png";
 	const Vector2 PLAYER_SOURCE_POS					{ 0.0f, 0.0f };
 	const Vector2 PLAYER_STARTING_POS				{ 0.0f, 150.0f };
 	const float PLAYER_SPRITE_WIDTH					= 16.0f;
-	const float PLAYER_SPRITE_HEIGHT					= 16.0f;
+	const float PLAYER_SPRITE_HEIGHT				= 16.0f;
 
 	//Platform
 	const char* const PLATFORM_SPRITE_FILEPATH		= "resources/Platform.png";
 	const Vector2 PLATFORM_SOURCE_POS				{ 480.0f, 0.0f };
-	const float PLATFORM_SPRITE_WIDTH					= 95.0f;
+	const float PLATFORM_SPRITE_WIDTH				= 95.0f;
 	const float PLATFORM_SPRITE_HEIGHT				= 63.0f;
 	const Vector2 PLATFORM_STARTING_POS				{ 0.0f, 400.0f };
 }

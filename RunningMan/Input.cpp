@@ -52,9 +52,9 @@ bool Input::pressed(SDL_Scancode key)
 	return _pressedKeys[key];
 }
 
-bool Input::wasKeyReleased(SDL_Scancode key)
+bool Input::released(SDL_Scancode key)
 {
-	return false;
+	return _releasedKeys[key];
 }
 
 bool Input::held(SDL_Scancode key)

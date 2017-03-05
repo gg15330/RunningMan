@@ -2,7 +2,7 @@
 
 
 constexpr int _timeToUpdate		{ 10 };
-constexpr int FPS				{ 50 };
+constexpr int FPS				{ 60 };
 constexpr int MAX_FRAME_TIME	{ 1000 / FPS };
 
 
@@ -55,7 +55,7 @@ void Game::gameLoop()
 			return;
 		}	
 
-		//move player
+		//horizontal movement
 		else if (_input.held(SDL_SCANCODE_LEFT) && _input.held(SDL_SCANCODE_RIGHT))
 		{
 			_player.stop();
@@ -72,6 +72,19 @@ void Game::gameLoop()
 		{
 			_player.stop();
 		}
+
+		//jump
+		if (_input.held(SDL_SCANCODE_Z))
+		{
+			std::cout << "JUMP" << std::endl;
+			_player.startJump();
+		}
+		else if (_input.released(SDL_SCANCODE_Z))
+		{
+			std::cout << "STOP JUMP" << std::endl;
+			_player.stopJump();
+		}
+
 		const int CURRENT_TIME_MS = SDL_GetTicks();
 		int ELAPSED_TIME_MS = CURRENT_TIME_MS - LAST_UPDATE_TIME;
 		update(std::min(ELAPSED_TIME_MS, MAX_FRAME_TIME));

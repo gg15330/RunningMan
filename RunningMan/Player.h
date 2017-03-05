@@ -63,6 +63,9 @@ public:
 	/// </summary>
 	void handleTileCollisions(std::vector<Entity*> others);
 
+	void startJump();
+	void stopJump();
+
 private:
 	bool _grounded;
 
