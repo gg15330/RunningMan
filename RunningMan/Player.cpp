@@ -8,7 +8,8 @@ Player::Player()
 
 Player::Player(SDL_Renderer* renderer, const char* const filePath, const float sourceX, const float sourceY, const float width, const float height, const float posX, const float posY) :
 	Entity(renderer, filePath, sourceX, sourceY, width, height, posX, posY),
-	_grounded(false)
+	_grounded(false),
+	_jumping(false)
 {
 }
 
@@ -108,10 +109,11 @@ void Player::handleTileCollisions(std::vector<Entity*> others)
 
 void Player::startJump()
 {
-	if (_grounded)
+	if (_grounded && !_jumping)
 	{
 		_dy = -globals::JUMP_SPEED;
 		_grounded = false;
+		_jumping = true;
 	}
 }
 
@@ -121,6 +123,7 @@ void Player::stopJump()
 	{
 		_dy = -(0.25f);
 	}
+	_jumping = false;
 }
 
 Direction Player::collisionSide(Entity* entity)

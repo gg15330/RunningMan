@@ -67,7 +67,7 @@ public:
 	void stopJump();
 
 private:
-	bool _grounded;
+	bool _grounded, _jumping;
 
 	/// <summary>
 	/// Checks if the supplied <see cref="SDL_Rect*"/> collides with any <see cref="Terrain"/> and returns the <see cref="Direction"/> of the collision
