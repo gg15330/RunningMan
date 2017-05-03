@@ -26,6 +26,22 @@ void Game::init()
 		globals::PLATFORM_SPRITE_HEIGHT,
 		globals::PLATFORM_STARTING_POS.x,
 		globals::PLATFORM_STARTING_POS.y };
+	_platform2 = Entity{ _display.getRenderer(),
+		globals::PLATFORM_SPRITE_FILEPATH,
+		globals::PLATFORM_SOURCE_POS.x,
+		globals::PLATFORM_SOURCE_POS.y,
+		globals::PLATFORM_SPRITE_WIDTH,
+		globals::PLATFORM_SPRITE_HEIGHT,
+		100,
+		300 };
+	_platform3 = Entity{ _display.getRenderer(),
+		globals::PLATFORM_SPRITE_FILEPATH,
+		300.0f,
+		300.0f,
+		globals::PLATFORM_SPRITE_WIDTH,
+		globals::PLATFORM_SPRITE_HEIGHT,
+		100,
+		300 };
 	_player = Player{ _display.getRenderer(),
 		globals::PLAYER_SPRITE_FILEPATH,
 		globals::PLAYER_SOURCE_POS.x,
@@ -36,7 +52,10 @@ void Game::init()
 		globals::PLAYER_STARTING_POS.y };
 	_level = Level(&_player);
 	_level.addTerrain(&_platform);
+	_level.addTerrain(&_platform2);
+	_level.addTerrain(&_platform3);
 	_display.registerEntity(&_platform);
+	_display.registerEntity(&_platform2);
 	_display.registerEntity(&_player);
 }
 
@@ -74,14 +93,12 @@ void Game::gameLoop()
 		}
 
 		//jump
-		if (_input.held(SDL_SCANCODE_Z))
+		if (_input.pressed(SDL_SCANCODE_Z))
 		{
-			std::cout << "JUMP" << std::endl;
 			_player.startJump();
 		}
 		else if (_input.released(SDL_SCANCODE_Z))
 		{
-			std::cout << "STOP JUMP" << std::endl;
 			_player.stopJump();
 		}
 
@@ -99,7 +116,7 @@ void Game::update(int timeElapsed)
 	{
 		return;
 	}
-	//_player.handleTileCollisions(_level.entityCollisions(&_player));
+	_player.handleTileCollisions(_level.entityCollisions(&_player));
 	_player.update(timeElapsed);
 }
 

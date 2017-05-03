@@ -50,13 +50,6 @@ void Player::update(int timeElapsed)
 	//vertical movement
 	_y += _dy * timeElapsed;
 	_dy = std::min(_dy + (globals::GRAVITY * timeElapsed), globals::MAX_VERTICAL_SPEED);
-	
-	if (_y >= 320.0f)
-	{
-		_y = 320.0f;
-		_dy = 0.0f;
-	}
-	_grounded = (_y >= 320);
 }
 
 void Player::stop()
@@ -91,10 +84,11 @@ void Player::handleTileCollisions(std::vector<Entity*> others)
 	case DOWN:
 		_y = other->y() - getDestRect()->h - 1;
 		_dy = 0;
-		temp = true;
+		std::cout << "Grounded: " << _grounded << "Jumping: " << _jumping << std::endl;
+		_grounded = true;
 		break;
 	case LEFT:
-		_x = (other->x() + other->w())+ 1;
+		_x = (other->x() + other->w()) + 1;
 		break;
 	case RIGHT:
 		_x = other->x() - getDestRect()->w - 1;
@@ -104,13 +98,13 @@ void Player::handleTileCollisions(std::vector<Entity*> others)
 	default:
 		break;
 	}
-	_grounded = temp;
 }
 
 void Player::startJump()
 {
 	if (_grounded && !_jumping)
 	{
+		std::cout << "Starting jump" << std::endl;
 		_dy = -globals::JUMP_SPEED;
 		_grounded = false;
 		_jumping = true;

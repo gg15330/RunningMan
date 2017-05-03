@@ -64,6 +64,7 @@ public:
 	void handleTileCollisions(std::vector<Entity*> others);
 
 	void startJump();
+	void continueJump();
 	void stopJump();
 
 private:

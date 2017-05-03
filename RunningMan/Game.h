@@ -37,7 +37,7 @@ private:
 	Input _input;
 	Level _level;
 	Player _player;
-	Entity _platform;
+	Entity _platform, _platform2, _platform3;
 
 	/// <summary>
 	/// Updates all game objects
